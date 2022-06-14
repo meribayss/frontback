@@ -3,8 +3,8 @@ import "./Training.css";
 
 import { Link } from "react-router-dom";
 
-import Pod from "../assets/pod.jpg";
-import Moon from "../assets/moon.jpg";
+import Pod from "../../assets/pod.jpg";
+import Moon from "../../assets/moon.jpg";
 
 const Training = () => {
   return (
