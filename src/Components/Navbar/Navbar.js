@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaIcons, FaTimes } from "react-icons/fa";
 import "./NavbarStyles.css";
+import { FaCartPlus, FaSignInAlt, FaRegHeart } from "react-icons/fa";
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
@@ -20,9 +21,6 @@ const Navbar = () => {
 
   return (
     <div className={color ? "header header-bg" : "header"}>
-      <Link to="/">
-        <h1>GLX TRVL</h1>
-      </Link>
       <ul className={click ? "nav-menu active" : "nav-menu"}>
         <li>
           <Link to="/">Home</Link>
@@ -36,6 +34,23 @@ const Navbar = () => {
         <li>
           <Link to="/contact">Contact</Link>
         </li>
+      </ul>
+      <Link to="/">
+        <h1>GLX TRVL</h1>
+      </Link>
+      <ul>
+        <FaCartPlus
+          size={27}
+          style={{ color: "#ffffff", marginRight: "2rem" }}
+        />
+        <FaRegHeart
+          size={27}
+          style={{ color: "#ffffff", marginRight: "2rem" }}
+        />
+        <FaSignInAlt
+          size={27}
+          style={{ color: "#ffffff", marginRight: "2rem" }}
+        />
       </ul>
       <div className="hamburger" onClick={handleClick}>
         {click ? (
