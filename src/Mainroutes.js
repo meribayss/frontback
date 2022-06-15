@@ -4,6 +4,9 @@ import Home from "../src/pages/Home";
 import Pricing from "../src/pages/Pricing";
 import Training from "../src/pages/Training";
 import Contact from "../src/pages/Contact";
+import AddProduct from "../src/Components/AddProduct/AddProduct";
+import Cart from "./Components/Cart/Cart";
+import ProductList from "../src/Components/Products/ProductsList"
 
 const Mainroutes = () => {
   return (
@@ -13,6 +16,11 @@ const Mainroutes = () => {
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/training" element={<Training />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/addproduct" element={<AddProduct />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/productlist" element={<ProductList />} />
+      {/* <Route path="/details/:id" element={<ProductsDetails />} /> */}
+      {/* <Route path="/edit/:id" element={<EditProduct />} /> */}
       </Routes>
     </div>
   );

@@ -7,10 +7,10 @@ import Form from '../Components/Form/Form'
 const Contact = () => {
     return (
         <div>
-            <Navbar />
+            {/* <Navbar /> */}
             <HeroImage heading='CONTACT.' text='Contact GLX Travelddd' />
             <Form />
-            <Footer/>
+            {/* <Footer/> */}
         </div>
     )
 }

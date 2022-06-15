@@ -10,10 +10,9 @@ const Training = () => {
   return (
     <div className="training">
       <div className="left">
-        <h1>Training</h1>
+        <h1>About US</h1>
         <p>
-          Thorough training is a necessity when traveling to space. We offer all
-          inclusive training for pre-flight and in-flight scenarios.
+          We were founded in 2022, our goal is to help you get your dream home.
         </p>
         <Link to="/contact">
           <button className="btn">Contact</button>

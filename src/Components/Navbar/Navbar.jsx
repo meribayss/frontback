@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaBars, FaIcons, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import "./NavbarStyles.css";
 import { FaCartPlus, FaSignInAlt, FaRegHeart } from "react-icons/fa";
 
@@ -29,6 +29,9 @@ const Navbar = () => {
           <Link to="/pricing">Pricing</Link>
         </li>
         <li>
+          <Link to="/addproduct">Addproduct</Link>
+        </li>
+        <li>
           <Link to="/training">Training</Link>
         </li>
         <li>
@@ -36,13 +39,15 @@ const Navbar = () => {
         </li>
       </ul>
       <Link to="/">
-        <h1>GLX TRVL</h1>
+        <h1>DreamHome</h1>
       </Link>
       <ul>
-        <FaCartPlus
-          size={27}
-          style={{ color: "#ffffff", marginRight: "2rem" }}
-        />
+        <Link to="/productlist">
+          <FaCartPlus
+            size={27}
+            style={{ color: "#ffffff", marginRight: "2rem" }}
+          />
+        </Link>
         <FaRegHeart
           size={27}
           style={{ color: "#ffffff", marginRight: "2rem" }}
