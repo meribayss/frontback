@@ -6,9 +6,9 @@ import Video from "../Components/Video/Video";
 const Home = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <Video />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

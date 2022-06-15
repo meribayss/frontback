@@ -7,10 +7,10 @@ import HeroImage from "../Components/HeroImage/HeroImage";
 const Pricing = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <HeroImage heading="PRICING." text="Choose your trip." />
       <PricingCards />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

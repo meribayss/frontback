@@ -7,10 +7,10 @@ import TrainingSection from "../Components/Training/Training";
 const Training = () => {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <HeroImage heading="TRAINING." text="Pre-Flight & In-Flight Training." />
       <TrainingSection />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
