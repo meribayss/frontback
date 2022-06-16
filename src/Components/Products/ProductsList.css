@@ -10,14 +10,14 @@
 }
 
 .main_container {
-  background-color: #c2d3e9a8;
+  background-color: blueviolet;
   display: flex;
   justify-content: space-between;
 }
 
 .filter {
   box-sizing: border-box;
-  background-color: #cfcfcf98;
+  background-color: white;
   width: 20%;
   height: 400px;
   margin-top: 50px;

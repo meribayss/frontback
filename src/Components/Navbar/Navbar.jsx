@@ -32,17 +32,20 @@ const Navbar = () => {
           <Link to="/addproduct">Addproduct</Link>
         </li>
         <li>
-          <Link to="/training">Training</Link>
+          <Link to="/productlist">Products</Link>
         </li>
         <li>
           <Link to="/contact">Contact</Link>
         </li>
+        {/* <Link to="/">
+          <h1 id="dream">DreamHome</h1>
+        </Link> */}
       </ul>
       <Link to="/">
-        <h1>DreamHome</h1>
+        <h1 id="dream">DreamHome</h1>
       </Link>
       <ul>
-        <Link to="/productlist">
+        <Link to="/cart">
           <FaCartPlus
             size={27}
             style={{ color: "#ffffff", marginRight: "2rem" }}

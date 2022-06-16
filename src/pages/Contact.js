@@ -1,18 +1,14 @@
-import React from 'react'
-import Footer from '../Components/Footer/Footer'
-import HeroImage from '../Components/HeroImage/HeroImage'
-import Navbar from '../Components/Navbar/Navbar'
-import Form from '../Components/Form/Form'
+import React from "react";
+import HeroImage from "../Components/HeroImage/HeroImage";
+import Form from "../Components/Form/Form";
 
 const Contact = () => {
-    return (
-        <div>
-            {/* <Navbar /> */}
-            <HeroImage heading='CONTACT.' text='Contact GLX Travelddd' />
-            <Form />
-            {/* <Footer/> */}
-        </div>
-    )
-}
+  return (
+    <div>
+      <HeroImage heading="CONTACT." text="Contact GLX Travelddd" />
+      <Form />
+    </div>
+  );
+};
 
-export default Contact
+export default Contact;
