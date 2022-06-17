@@ -55,10 +55,18 @@ const Navbar = () => {
           size={27}
           style={{ color: "#ffffff", marginRight: "2rem" }}
         />
-        <FaSignInAlt
-          size={27}
-          style={{ color: "#ffffff", marginRight: "2rem" }}
-        />
+        <Link to="/login">
+          <FaSignInAlt
+            size={27}
+            style={{ color: "#ffffff", marginRight: "2rem" }}
+          />
+        </Link>
+        <Link to="/register">
+          <FaSignInAlt
+            size={27}
+            style={{ color: "#ffffff", marginRight: "2rem" }}
+          />
+        </Link>
       </ul>
       <div className="hamburger" onClick={handleClick}>
         {click ? (

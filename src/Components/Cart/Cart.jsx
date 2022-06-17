@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from "react";
-import { cartContext } from "../../Context/CartContext";
+// import { cartContext } from "../../Context/CartContext";
 
 const Cart = () => {
   const { cart, getCart, deleteCartProduct, changeProductCount } =
-    useContext(cartContext);
+    // useContext(cartContext);
 
-  useEffect(() => {
-    getCart();
-  }, []);
+    useEffect(() => {
+      getCart();
+    }, []);
 
   return (
     <div>
@@ -17,11 +17,10 @@ const Cart = () => {
           flexDirection: "column",
           justifyContent: "space-between",
           alignItems: "center",
-          
         }}
       >
         <thead>
-          <tr style={{ display: "flex", border:"1px solid white" }}>
+          <tr style={{ display: "flex", border: "1px solid white" }}>
             <th>Фото</th>
             <th>Название</th>
             <th>Цена</th>
