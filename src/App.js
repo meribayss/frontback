@@ -4,16 +4,22 @@ import Navbar from "./Components/Navbar/Navbar";
 import ProductContextProvider from "./Context/ProductContext";
 import Mainroutes from "./Mainroutes";
 import CartContextProvider from "./Context/CartContext";
+import AuthContextProvider from "./Context/AuthContext";
+import MainContextProvider from "./Context/MainContext";
 const App = () => {
   return (
     <div>
-      <CartContextProvider>
-        <ProductContextProvider>
+      {/* <CartContextProvider> */}
+      <MainContextProvider>
+        <AuthContextProvider>
+          {/* <ProductContextProvider> */}
           <Navbar />
           <Mainroutes />
           <Footer />
-        </ProductContextProvider>
-      </CartContextProvider>
+          {/* </ProductContextProvider> */}
+        </AuthContextProvider>
+      </MainContextProvider>
+      {/* </CartContextProvider> */}
     </div>
   );
 };

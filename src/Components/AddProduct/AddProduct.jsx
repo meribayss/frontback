@@ -1,21 +1,22 @@
 import "./AddProduct.css";
 import React, { useContext, useState } from "react";
-import { productContext } from "../../Context/ProductContext";
+// import { productContext } from "../../Context/ProductContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const initObj = {
-  title: "",
-  type: "",
-  description: "",
   price: 0,
-  img1: "",
-  img2: "",
-  img3: "",
+  title: "",
+  category: "",
+  description: "",
+  author: "",
+  // img1: "",
+  // img2: "",
+  // img3: "",
 };
 
 const AddProduct = () => {
-  const { addProduct } = useContext(productContext);
+  // const { addProduct } = useContext(productContext);
   const [inpValues, setInpValues] = useState(initObj);
 
   const alertToastify = () => {
@@ -45,19 +46,20 @@ const AddProduct = () => {
 
   const handleSave = (e) => {
     if (
-      inpValues.title.trim() === "" ||
-      inpValues.type.trim() === "" ||
-      inpValues.description.trim() === "" ||
       inpValues.price.toString().trim() === "" ||
-      inpValues.img1.trim() === "" ||
-      inpValues.img2.trim() === "" ||
-      inpValues.img3.trim() === ""
+      inpValues.title.trim() === "" ||
+      inpValues.category.trim() === "" ||
+      inpValues.description.trim() === "" ||
+      inpValues.author.trim() === ""
+      // inpValues.img1.trim() === "" ||
+      // inpValues.img2.trim() === "" ||
+      // inpValues.img3.trim() === ""
     ) {
       alertToastify();
       return;
     }
     e.preventDefault();
-    addProduct(inpValues);
+    // addProduct(inpValues);
     clearInput();
   };
 
@@ -67,7 +69,14 @@ const AddProduct = () => {
         111
         <div className="form">
           <form>
-            <label>Name</label>
+            <label>Price</label>
+            <input
+              type="number"
+              onChange={(e) => handleChange(e)}
+              name="price"
+              value={inpValues.price}
+            ></input>
+            <label>Title</label>
             <input
               type="text"
               onChange={(e) => handleChange(e)}
@@ -75,12 +84,12 @@ const AddProduct = () => {
               value={inpValues.title}
             ></input>
 
-            <label>Type</label>
+            <label>Category</label>
             <input
               type="text"
               onChange={(e) => handleChange(e)}
-              name="type"
-              value={inpValues.type}
+              name="category"
+              value={inpValues.category}
             ></input>
             <label>Description</label>
             <input
@@ -89,14 +98,14 @@ const AddProduct = () => {
               name="description"
               value={inpValues.description}
             ></input>
-            <label>Price</label>
+            <label>Author</label>
             <input
-              type="number"
+              type="text"
               onChange={(e) => handleChange(e)}
-              name="price"
-              value={inpValues.price}
+              name="author"
+              value={inpValues.author}
             ></input>
-            <label>IMG1</label>
+            {/* <label>IMG1</label>
             <input
               type="text"
               onChange={(e) => handleChange(e)}
@@ -116,7 +125,7 @@ const AddProduct = () => {
               onChange={(e) => handleChange(e)}
               name="img3"
               value={inpValues.img3}
-            ></input>
+            ></input> */}
 
             <button
               onClick={handleSave}
