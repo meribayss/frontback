@@ -49,8 +49,8 @@ const AddProduct = () => {
       inpValues.price.toString().trim() === "" ||
       inpValues.title.trim() === "" ||
       inpValues.category.trim() === "" ||
-      inpValues.description.trim() === "" ||
-      inpValues.author.trim() === ""
+      inpValues.description.trim() === ""
+      // inpValues.author.trim() === ""
       // inpValues.img1.trim() === "" ||
       // inpValues.img2.trim() === "" ||
       // inpValues.img3.trim() === ""
@@ -83,14 +83,24 @@ const AddProduct = () => {
               name="title"
               value={inpValues.title}
             ></input>
+            <label for="cars">Choose a country:</label>
+            <select id="country" name="country">
+              <option value="usa">USA</option>
+              <option value="southKorea">South Korea</option>
+              <option value="jamaica">Jamaica</option>
+              <option value="mexico">Mexico</option>
+              <option value="greece">Greece</option>
+              <option value="thailand">Thailand</option>
+              <option value="maldives">Maldives</option>
+            </select>
 
-            <label>Category</label>
+            {/* <label>Category</label>
             <input
               type="text"
               onChange={(e) => handleChange(e)}
               name="category"
               value={inpValues.category}
-            ></input>
+            ></input> */}
             <label>Description</label>
             <input
               type="text"
@@ -98,13 +108,13 @@ const AddProduct = () => {
               name="description"
               value={inpValues.description}
             ></input>
-            <label>Author</label>
+            {/* <label>Author</label>
             <input
               type="text"
               onChange={(e) => handleChange(e)}
               name="author"
               value={inpValues.author}
-            ></input>
+            ></input> */}
             {/* <label>IMG1</label>
             <input
               type="text"

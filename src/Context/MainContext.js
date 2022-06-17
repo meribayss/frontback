@@ -63,7 +63,11 @@ const MainContextProvider = ({ children }) => {
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
     };
-    await axios.post("houseshop.herokuapp.com/products/", newProduct, config);
+    await axios.post(
+      "houseshop.herokuapp.com/products/create/",
+      newProduct,
+      config
+    );
     getProductsData();
   };
 
