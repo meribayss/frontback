@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { productContext } from "../../Context/ProductContext";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -12,11 +11,12 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { cartContext } from "../../Context/CartContext";
 import "../../Components/Products/ProductsList.css";
 import ReactPaginate from "react-paginate";
+import { mainContext } from "../../Context/MainContext";
 
 const ProductsList = () => {
-  const { getProducts, products, deleteProduct } = useContext(productContext);
+  const { getProductsData, products, deleteProduct } = useContext(mainContext);
 
-  const { addProductToCart } = useContext(cartContext);
+  // const { addProductToCart } = useContext(cartContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
   // Хук useSearchParams предназначен для чтения и изменения строки запроса в URL для текущего маршрута. По аналогии с хуком useState возвращает значение и функцию для изменения этого значения.
@@ -50,7 +50,7 @@ const ProductsList = () => {
   }, []);
 
   useEffect(() => {
-    getProducts();
+    getProductsData();
     if (type === "all") {
       setSearchParams(paramsNoType());
     } else {
@@ -155,7 +155,9 @@ const ProductsList = () => {
                     </Button>
                   </NavLink>
 
-                  <Button onClick={(e) => addProductToCart(item)}>
+                  <Button
+                  // onClick={(e) => addProductToCart(item)}
+                  >
                     <AddShoppingCartIcon />
                   </Button>
                 </CardActions>

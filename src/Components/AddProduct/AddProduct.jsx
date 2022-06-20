@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 // import { productContext } from "../../Context/ProductContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { mainContext } from "../../Context/MainContext";
 
 const initObj = {
   price: 0,
@@ -16,7 +17,7 @@ const initObj = {
 };
 
 const AddProduct = () => {
-  // const { addProduct } = useContext(productContext);
+  const { addProduct } = useContext(mainContext);
   const [inpValues, setInpValues] = useState(initObj);
 
   const alertToastify = () => {
