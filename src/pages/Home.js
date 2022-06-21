@@ -1,4 +1,5 @@
 import React from "react";
+import HomeCards from "../Components/HomeCards/HomeCards";
 import Video from "../Components/Video/Video";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
     <div>
       {/* <Navbar /> */}
       <Video />
+      <HomeCards />
       {/* <Footer /> */}
     </div>
   );
