@@ -1,6 +1,8 @@
-import React, { useReducer } from "react";
+import React, { useReducer, createContext } from "react";
 import axios from "axios";
-export const mainContext = React.createContext();
+import { API } from "../Config";
+
+export const mainContext = createContext();
 
 const INIT_STATE = {
   products: [],
@@ -28,12 +30,14 @@ const MainContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
   const getProductsData = async () => {
-    let { data } = await axios("houseshop.herokuapp.com/products");
+    let { data } = await axios(API);
     dispatch({
       type: "GET_PRODUCTS_DATA",
       payload: data,
     });
   };
+
+  console.log(state.products, "List of products in context");
 
   const getExactProductData = async (id) => {
     let { data } = await axios(`houseshop.herokuapp.com/products/${id}`);
@@ -60,10 +64,19 @@ const MainContextProvider = ({ children }) => {
   //   };
 
   const addProduct = async (newProduct) => {
+    let token = JSON.parse(localStorage.getItem("token"));
+    const Authorization = `Bearer ${token.access}`;
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
     };
-    await axios.post("houseshop.herokuapp.com/products/", newProduct, config);
+    let FormData = new FormData();
+    FormData.append("price", newProduct.price);
+    FormData.append("title", newProduct.title);
+    FormData.append("category", newProduct.category);
+    FormData.append("description", newProduct.description);
+    FormData.append("author", newProduct.author);
+
+    await axios.post(`${API}/products/`, FormData, config);
     getProductsData();
   };
 
