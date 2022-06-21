@@ -14,8 +14,8 @@ const Pricing = () => {
           <p>- Views -</p>
           <p>- Featured -</p>
           <p>- Private Quarters -</p>
-          <Link to="/contact" className="btn">
-            Book
+          <Link to="/productlist" className="btn">
+          Watch
           </Link>
         </div>
         <div className="card">
@@ -26,8 +26,8 @@ const Pricing = () => {
           <p>- Views -</p>
           <p>- Featured -</p>
           <p>- Private Quarters -</p>
-          <Link to="/contact" className="btn">
-            Book
+          <Link to="/productlist" className="btn">
+          Watch
           </Link>
         </div>
         <div className="card">
@@ -38,8 +38,8 @@ const Pricing = () => {
           <p>- Views -</p>
           <p>- Featured -</p>
           <p>- Private Quarters -</p>
-          <Link to="/contact" className="btn">
-            Book
+          <Link to="/productlist" className="btn">
+            Watch
           </Link>
         </div>
       </div>
