@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import API_AUTH from "../Config";
@@ -18,6 +18,7 @@ const Login = () => {
   };
 
   const registerUser = async (newUser) => {
+    console.log(newUser, "login data");
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
     };
@@ -41,6 +42,7 @@ const Login = () => {
       form_data.append("password", inpPassword);
       registerUser(form_data);
     }
+    console.log(inpEmail, inpPassword);
   }
 
   return (
@@ -76,14 +78,16 @@ const Login = () => {
               placeholder="*Password"
             />
           </div>
-          <button
-            onClick={handleClick}
-            className="btn btn-light"
-            style={{ width: "100%" }}
-          >
-            Login
-          </button>
-          <ToastContainer />
+          <NavLink to="/">
+            <button
+              onClick={handleClick}
+              className="btn btn-light"
+              style={{ width: "100%" }}
+            >
+              Login
+            </button>
+            <ToastContainer />
+          </NavLink>
         </div>
       </div>
     </div>

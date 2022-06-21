@@ -11,6 +11,7 @@ const Register = () => {
   const [inpPasswordConfirm, setPasswordConfirm] = useState("");
   const [inpName, setName] = useState("");
   const [inpLastName, setLastName] = useState("");
+  const [inpUsername, setUsername] = useState("");
 
   const navigate = useNavigate();
   const notify = (error) => {
@@ -58,12 +59,14 @@ const Register = () => {
     else if (!inpPasswordConfirm) notify("Enter password");
     else if (!inpName) notify("Enter name");
     else if (!inpLastName) notify("Enter last name");
+    else if (!inpUsername) notify("Enter username");
     else {
       form_data.append("email", inpEmail);
       form_data.append("password", inpPassword);
       form_data.append("password_confirm", inpPasswordConfirm);
       form_data.append("name", inpName);
       form_data.append("last_name", inpLastName);
+      form_data.append("username", inpUsername);
       registerUser(form_data);
     }
   }
@@ -131,7 +134,16 @@ const Register = () => {
               placeholder="*Last Name"
             />
           </div>
-
+          <div className="mb-3">
+            <input
+              type="username"
+              className="form-control"
+              onChange={(e) => setUsername(e.target.value)}
+              name="username"
+              key="username"
+              placeholder="*Username"
+            />
+          </div>
           <button
             onClick={handleClick}
             className="btn btn-light"

@@ -1,5 +1,5 @@
 import React from "react";
-import "./HomeCards.css";
+// import "./HomeCards.css";
 
 const HomeCards = () => {
   let reveals = document.querySelectorAll(".reveal");
