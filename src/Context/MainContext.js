@@ -64,10 +64,19 @@ const MainContextProvider = ({ children }) => {
   //   };
 
   const addProduct = async (newProduct) => {
+    let token = JSON.parse(localStorage.getItem("token"));
+    const Authorization = `Bearer ${token.access}`;
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
     };
-    await axios.post(API, newProduct, config);
+    let FormData = new FormData();
+    FormData.append("price", newProduct.price);
+    FormData.append("title", newProduct.title);
+    FormData.append("category", newProduct.category);
+    FormData.append("description", newProduct.description);
+    FormData.append("author", newProduct.author);
+
+    await axios.post(`${API}/products/`, FormData, config);
     getProductsData();
   };
 
