@@ -8,17 +8,17 @@ import MainContextProvider from "./Context/MainContext";
 const App = () => {
   return (
     <div>
-      {/* <CartContextProvider> */}
-      <MainContextProvider>
-        <AuthContextProvider>
-          {/* <ProductContextProvider> */}
-          <Navbar />
-          <Mainroutes />
-          <Footer />
-          {/* </ProductContextProvider> */}
-        </AuthContextProvider>
-      </MainContextProvider>
-      {/* </CartContextProvider> */}
+      <CartContextProvider>
+        <MainContextProvider>
+          <AuthContextProvider>
+            {/* <ProductContextProvider> */}
+            <Navbar />
+            <Mainroutes />
+            <Footer />
+            {/* </ProductContextProvider> */}
+          </AuthContextProvider>
+        </MainContextProvider>
+      </CartContextProvider>
     </div>
   );
 };

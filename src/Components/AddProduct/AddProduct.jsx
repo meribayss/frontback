@@ -60,7 +60,7 @@ const AddProduct = () => {
       return;
     }
     e.preventDefault();
-    // addProduct(inpValues);
+    addProduct(inpValues);
     clearInput();
   };
 

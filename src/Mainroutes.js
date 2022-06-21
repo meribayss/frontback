@@ -14,8 +14,8 @@ const Mainroutes = () => {
   return (
     <div>
       <Routes>
-        <Route exact path="/register" element={<Register></Register>} />
-        <Route exact path="/login" element={<Login></Login>} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/training" element={<Training />} />
