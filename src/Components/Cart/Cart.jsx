@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from "react";
-// import { cartContext } from "../../Context/CartContext";
+import { cartContext } from "../../Context/CartContext";
 
 const Cart = () => {
   const { cart, getCart, deleteCartProduct, changeProductCount } =
-    // useContext(cartContext);
+    useContext(cartContext);
 
-    useEffect(() => {
-      getCart();
-    }, []);
+  useEffect(() => {
+    getCart();
+  }, []);
 
   return (
     <div>
