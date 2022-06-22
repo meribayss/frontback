@@ -10,9 +10,12 @@ h1,
 h4,
 p,
 a {
-  color: #fff;
+  color: white;
 }
 
+.p1 {
+  color: #000;
+}
 body {
   margin: 0;
   font-family: "Outfit", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
@@ -50,5 +53,5 @@ code {
 }
 
 .btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: gray;
 }

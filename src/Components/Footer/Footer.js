@@ -9,7 +9,6 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 
-
 const Footer = () => {
   return (
     <div className="footer">
@@ -21,8 +20,8 @@ const Footer = () => {
               style={{ color: "#ffffff", marginRight: "2rem" }}
             />
             <div>
-              <p>123 Acme St.</p>
-              <h4>Houston, Tx</h4>
+              <p>Tabyshalieva 29</p>
+              <h4>Bishkek, Kyrgyzstan</h4>
             </div>
           </div>
           <div className="phone">
@@ -31,7 +30,7 @@ const Footer = () => {
                 size={20}
                 style={{ color: "#ffffff", marginRight: "2rem" }}
               />{" "}
-              1-800-123-1234
+              0556-16-55-65
             </h4>
           </div>
           <div className="email">
@@ -40,25 +39,34 @@ const Footer = () => {
                 size={20}
                 style={{ color: "#ffffff", marginRight: "2rem" }}
               />{" "}
-              trips@galaxy.com
+              villas@mail.ru
             </h4>
           </div>
         </div>
         <div className="right">
           <h4>About the company</h4>
           <p>
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam"
+            "We are the first service where you can purchase any luxury villa
+            you like. Subscribe us on social media to see all of our new
+            updates!!!"
           </p>
           <div className="social">
             <FaFacebook
               size={30}
               style={{ color: "#ffffff", marginRight: "1rem" }}
+              onClick={() =>
+                window.open(
+                  "https://www.facebook.com/anantarakihavahmaldives/",
+                  "_blank"
+                )
+              }
             />
             <FaTwitter
               size={30}
               style={{ color: "#ffffff", marginRight: "1rem" }}
+              onClick={() =>
+                window.open("https://twitter.com/hashtag/villas", "_blank")
+              }
             />
             <FaLinkedin
               size={30}

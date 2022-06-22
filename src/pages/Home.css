@@ -51,7 +51,7 @@ img {
 }
 
 .card {
-  /* display: grid; */
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   /* grid-gap: 2rem; */
   /* background: #f1f1f1; */
@@ -91,4 +91,7 @@ img {
   .card {
     display: block;
   }
+}
+.uff {
+  margin-bottom: 36px;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import Video from "../Components/Video/Video";
 import background from "../../src/assets/backgroundimg.png";
+import { NavLink } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -45,16 +46,18 @@ const Home = () => {
               LUXURY BEVERLY HILLS RENTAL WITH QUIET ZEN GARDEN AND HILLTOP
               VIEWS
             </h3>
-            <h6>Beverly Hills, USA</h6>
-            <p>
+            <h6 className="uff">Beverly Hills, USA</h6>
+            <p className="p1">
               This luxury Beverly Hills rental is a stylish, contemporary
               retreat which is perfectly positioned in the hills above the city
               to capture achingly beautiful panoramic views across the canyon.
             </p>
-            <a href="#" class="btn">
-              {" "}
-              Buy Now{" "}
-            </a>
+            <NavLink to="/productlist">
+              <a href="#" class="btn">
+                {" "}
+                Buy Now{" "}
+              </a>
+            </NavLink>
           </div>
         </section>
 
@@ -65,17 +68,19 @@ const Home = () => {
           />
           <div>
             <h3>Villa Thalia</h3>
-            <h6>Crete, Greece</h6>
-            <p>
+            <h6 className="uff">Crete, Greece</h6>
+            <p className="p1">
               The villa has been beautifully designed with high attention to
               detail, boasting elegant interiors and stylish furnishings. Villa
               Thalia beautifully intertwines natural materials of marble, wood
               and natural stone leaving a quality, high-end finish.
             </p>
-            <a href="#" class="btn">
-              {" "}
-              Buy Now{" "}
-            </a>
+            <NavLink to="/productlist">
+              <a href="#" class="btn">
+                {" "}
+                Buy Now{" "}
+              </a>
+            </NavLink>
           </div>
         </section>
 
@@ -86,17 +91,18 @@ const Home = () => {
           />
           <div>
             <h3>Anantara Kihavah Family Beach Pool Villa</h3>
-            <h6>Malé,Maldives</h6>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod
-              error enim laudantium, animi veniam libero eveniet culpa unde
-              perferendis illo fugit corporis, voluptatibus totam dolorum,
-              maiores magnam officia. Ab, delectus.
+            <h6 className="uff">Malé,Maldives</h6>
+            <p className="p1">
+              As spacious as Maldives private villas come, the Two Bedroom
+              Family Beach Pool Villa offers the perfect escape for your loved
+              ones.
             </p>
-            <a href="#" class="btn">
-              {" "}
-              Buy Now{" "}
-            </a>
+            <NavLink to="/productlist">
+              <a href="#" class="btn">
+                {" "}
+                Buy Now{" "}
+              </a>
+            </NavLink>
           </div>
         </section>
 
@@ -106,18 +112,20 @@ const Home = () => {
             alt=""
           />
           <div>
-            <h3>home</h3>
-            <h6>Malé,Maldives</h6>
-            <p>
+            <h3>Casa La Vida Dulce</h3>
+            <h6 className="uff">Malé,Maldives</h6>
+            <p className="p1">
               Inspired by dramatic, natural tropical elements and beautiful
               landscapes this one-of-a-kind Villa offers guests dramatic views
               of the Pacific Ocean from all points on the property.homes
               ohuennyu house
             </p>
-            <a href="#" class="btn">
-              {" "}
-              Buy Now{" "}
-            </a>
+            <NavLink to="/productlist">
+              <a href="#" class="btn">
+                {" "}
+                Buy Now{" "}
+              </a>
+            </NavLink>
           </div>
         </section>
       </main>
