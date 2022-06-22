@@ -20,7 +20,7 @@ const Pricing = () => {
               <p>- Featured -</p>
               <p>- Private Quarters -</p>
               <Link to="/productlist" className="btn">
-                Watch
+                Watc
               </Link>
             </div>
           </div>
