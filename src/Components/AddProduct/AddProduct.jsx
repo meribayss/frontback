@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { mainContext } from "../../Context/MainContext";
 
 const initObj = {
-  price: 0,
+  price: "",
   title: "",
   category: "",
   description: "",
@@ -139,14 +139,13 @@ const AddProduct = () => {
               name="img3"
               value={inpValues.img3}
             ></input> */}
-
             <button
               onClick={handleSave}
               type="button"
               variant="contained"
               className="btn"
             >
-              Submit
+              Save
             </button>
           </form>
         </div>

@@ -10,6 +10,7 @@ import ProductList from "../src/Components/Products/ProductsList";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
 import Favorite from "./Components/Favorite/Favorite";
+import ProductDetails from "./Components/Products/ProductsDetails";
 
 const Mainroutes = () => {
   return (
@@ -25,7 +26,7 @@ const Mainroutes = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/favorite" element={<Favorite />} />
         <Route path="/productlist" element={<ProductList />} />
-        {/* <Route path="/details/:id" element={<ProductsDetails />} /> */}
+        <Route path="/details/:id" element={<ProductDetails />} />
         {/* <Route path="/edit/:id" element={<EditProduct />} /> */}
       </Routes>
     </div>
