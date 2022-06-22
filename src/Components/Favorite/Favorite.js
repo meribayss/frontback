@@ -71,6 +71,17 @@ const Favorite = () => {
                 />
                 <CardMedia
                   sx={{
+                    height: "50",
+                    alignItems: "center",
+                    marginBottom: "auto",
+                  }}
+                  component="img"
+                  // alt={elem.item.title}
+                  height="50"
+                  src={elem.item.img}
+                />
+                <CardMedia
+                  sx={{
                     width: "200px",
                     height: "220px",
                     alignItems: "center",
@@ -81,6 +92,7 @@ const Favorite = () => {
                   height="100"
                   image={elem.item.img1}
                 />
+
                 <CardContent>
                   <Typography
                     variant="body2"

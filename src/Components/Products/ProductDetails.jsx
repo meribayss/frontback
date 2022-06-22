@@ -17,6 +17,7 @@ import { cartContext } from "../../Context/CartContext";
 
 import SwiperCore, { Thumbs } from "swiper";
 import { mainContext } from "../../Context/MainContext";
+import { CardMedia } from "@mui/material";
 
 // SwiperCore.use([Thumbs]);
 
@@ -83,32 +84,54 @@ const ProductDetails = () => {
               <MemoryIcon sx={{ mr: "10px" }} />
               {productDetails.memory} GB
             </Typography> */}
-            <Typography
+
+            {/* <Typography
               variant="h3"
               gutterBottom
               component="h3"
               sx={{ fontWeight: 700, letterSpacing: 2 }}
             >
               {exactproduct.id}
-            </Typography>
+            </Typography> */}
+
+            {/* <SwiperSlide>
+              <Paper elevation={3}>
+                <img
+                  sx={{
+                    height: "50",
+                    alignItems: "center",
+                    marginBottom: "auto",
+                  }}
+                  component="img"
+                  alt={item.title}
+                  height="50"
+                  src={item.img}
+                />
+              </Paper>
+            </SwiperSlide> */}
+            <CardMedia
+              sx={{
+                height: "50",
+                alignItems: "center",
+                marginBottom: "auto",
+              }}
+              component="img"
+              alt={exactproduct.title}
+              height="70"
+              src={exactproduct.img}
+            />
             <Typography
               variant="h3"
               gutterBottom
               component="h3"
-              sx={{ fontWeight: 700, letterSpacing: 2 }}
+              sx={{ fontWeight: 500, letterSpacing: 2 }}
             >
               title: {exactproduct.title}
             </Typography>
             <Typography variant="body2" gutterBottom>
               {exactproduct.desc}
             </Typography>
-            <Alert
-              icon={<TrendingDownIcon fontSize="inherit" />}
-              severity="success"
-              sx={{ fontWeight: 700, mt: "20px" }}
-            >
-              Скидка : 10 %
-            </Alert>
+
             <Box
               component="div"
               sx={{
@@ -128,15 +151,13 @@ const ProductDetails = () => {
                   textDecoration: "line-through",
                   marginRight: "20px",
                 }}
-              >
-                {exactproduct.price} с.
-              </Typography>
+              ></Typography>
               <Typography
                 variant="h4"
                 component="div"
                 sx={{ fontWeight: 700, letterSpacing: 2 }}
               >
-                {exactproduct.price} с.
+                {exactproduct.price}
               </Typography>
               <Typography
                 variant="h5"
@@ -144,11 +165,11 @@ const ProductDetails = () => {
                 sx={{
                   fontWeight: 300,
                   letterSpacing: 2,
-                  textDecoration: "line-through",
+
                   marginRight: "20px",
                 }}
               >
-                {exactproduct.category} с.
+                {exactproduct.category}
               </Typography>
             </Box>
             <Button
@@ -159,8 +180,10 @@ const ProductDetails = () => {
               fullWidth={true}
               sx={{ mt: "20px", height: "50px" }}
             >
-              Добавить в корзину
+              {" "}
+              Add to cart
             </Button>
+
             <Alert
               severity="info"
               variant="outlined"
