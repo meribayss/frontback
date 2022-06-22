@@ -20,6 +20,7 @@
 .card {
   text-align: center;
   padding: 1rem;
+  size: 100px;
 }
 
 /* .card:hover {
@@ -32,8 +33,8 @@
 }
 
 .card .bar {
-  border-bottom: 1px solid black;
-  width: 10%;
+  border-bottom: solid black;
+  width: 0%;
   margin: 1.5rem auto;
   display: block;
 }
@@ -64,5 +65,8 @@
   }
 }
 .card-img-top {
-  size: 100px;
+  width: 161%;
+}
+.par {
+  width: 161%;
 }
