@@ -93,7 +93,6 @@ const ProductsList = () => {
                     // width: "470px",
                     // height: "400px ",
                     marginTop: "130px",
-                  
                   }}
                 >
                   {/* <CardMedia
@@ -107,7 +106,9 @@ const ProductsList = () => {
                     height="200"
                     // image={item.img1}
                   /> */}
-                  <CardContent sx={{ marginLeft: "20px" , marginBottom:"200px" }}>
+                  <CardContent
+                    sx={{ marginLeft: "20px", marginBottom: "200px" }}
+                  >
                     <Typography gutterBottom variant="h5" component="div">
                       {item.title}
                     </Typography>
@@ -117,7 +118,14 @@ const ProductsList = () => {
                       color="text.secondary"
                       height="25px"
                     >
-                      {item.description}
+                      {item.desc}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      height="25px"
+                    >
+                      {item.category}
                     </Typography>
 
                     <Typography
@@ -154,13 +162,12 @@ const ProductsList = () => {
                       }}
                       onClick={() => deleteProduct(item.id)}
                       className="btn"
-                     
                       variant="outlined"
                     >
                       Delete <RestoreFromTrashIcon />
                     </Button>
                     <NavLink to={`/details/${item.id}`}>
-                      <Button className="btn"  variant="outlined">
+                      <Button className="btn" variant="outlined">
                         Details
                       </Button>
                     </NavLink>

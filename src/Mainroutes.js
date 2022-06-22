@@ -11,6 +11,7 @@ import Register from "./Register/Register";
 import Login from "./Login/Login";
 import Favorite from "./Components/Favorite/Favorite";
 import ProductDetails from "./Components/Products/ProductsDetails";
+import Payment from "./Components/Payment/Payment";
 
 const Mainroutes = () => {
   return (
@@ -27,6 +28,7 @@ const Mainroutes = () => {
         <Route path="/favorite" element={<Favorite />} />
         <Route path="/productlist" element={<ProductList />} />
         <Route path="/details/:id" element={<ProductDetails />} />
+        <Route path="/payment" element={<Payment />} />
         {/* <Route path="/edit/:id" element={<EditProduct />} /> */}
       </Routes>
     </div>

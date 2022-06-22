@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { cartContext } from "../../Context/CartContext";
 import "./Cart.css";
 
@@ -68,7 +69,9 @@ const Cart = () => {
           }}
         >
           Общая сумма: {cart.totalPrice}
-          <button>Заказать</button>
+          <NavLink to="/payment">
+            <button>Заказать</button>
+          </NavLink>
         </h4>
       </div>
     </div>
