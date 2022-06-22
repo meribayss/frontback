@@ -9,9 +9,12 @@ import Cart from "./Components/Cart/Cart";
 import ProductList from "../src/Components/Products/ProductsList";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
+// import ProductDetails from "./Components/Products/ProductDetails";
+import EditProduct from "./Components/AddProduct/EditProduct/EditProduct";
 import Favorite from "./Components/Favorite/Favorite";
-import ProductDetails from "./Components/Products/ProductsDetails";
+// import ProductDetails from "./Components/Products/ProductsDetails";
 import Payment from "./Components/Payment/Payment";
+import ProductDetails from "./Components/Products/ProductDetails";
 
 const Mainroutes = () => {
   return (
@@ -28,8 +31,9 @@ const Mainroutes = () => {
         <Route path="/favorite" element={<Favorite />} />
         <Route path="/productlist" element={<ProductList />} />
         <Route path="/details/:id" element={<ProductDetails />} />
+        <Route path="/edit/:id" element={<EditProduct />} />
         <Route path="/payment" element={<Payment />} />
-        {/* <Route path="/edit/:id" element={<EditProduct />} /> */}
+        <Route path="/edit/:id" element={<EditProduct />} />
       </Routes>
     </div>
   );

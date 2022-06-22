@@ -11,7 +11,7 @@ const initObj = {
   category: "",
   description: "",
   author: "",
-  img: "",
+  // img1: "",
   // img2: "",
   // img3: "",
 };
@@ -51,8 +51,8 @@ const AddProduct = () => {
       inpValues.title.trim() === "" ||
       inpValues.category.trim() === "" ||
       inpValues.description.trim() === "" ||
-      inpValues.author.trim() === "" ||
-      inpValues.img.trim() === ""
+      inpValues.author.trim() === ""
+      // inpValues.img1.trim() === "" ||
       // inpValues.img2.trim() === "" ||
       // inpValues.img3.trim() === ""
     ) {
@@ -118,14 +118,14 @@ const AddProduct = () => {
               name="author"
               value={inpValues.author}
             ></input>
-            <label>IMG1</label>
+            {/* <label>IMG1</label>
             <input
               type="text"
               onChange={(e) => handleChange(e)}
-              name="img"
-              value={inpValues.img}
+              name="img1"
+              value={inpValues.img1}
             ></input>
-            {/* <label>IMG2</label>
+            <label>IMG2</label>
             <input
               type="text"
               onChange={(e) => handleChange(e)}

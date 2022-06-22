@@ -117,7 +117,8 @@ const Home = () => {
             <p className="p1">
               Inspired by dramatic, natural tropical elements and beautiful
               landscapes this one-of-a-kind Villa offers guests dramatic views
-              of the Pacific Ocean from all points on the property.
+              of the Pacific Ocean from all points on the property.homes
+              ohuennyu house
             </p>
             <NavLink to="/productlist">
               <a href="#" class="btn">

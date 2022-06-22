@@ -12,14 +12,18 @@ import { cartContext } from "../../Context/CartContext";
 import "../../Components/Products/ProductsList.css";
 import ReactPaginate from "react-paginate";
 import { mainContext } from "../../Context/MainContext";
+import { Z } from "../../Config";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { FavoriteContext } from "../../Context/FavoriteContext";
-import { styled, alpha } from "@mui/material/styles";
-import SearchIcon from "@mui/icons-material/Search";
-import LiveSearch from "../LiveSearch/LiveSearch";
 
 const ProductsList = () => {
-  const { getProductsData, products, deleteProduct } = useContext(mainContext);
+  const {
+    getProductsData,
+    products,
+    deleteProduct,
+    editProduct,
+    fetchByParams,
+  } = useContext(mainContext);
   const { addProductToCart } = useContext(cartContext);
   const { addProductToFavorite } = useContext(FavoriteContext);
   // const { addProductToCart } = useContext(cartContext);
@@ -36,14 +40,14 @@ const ProductsList = () => {
     // console.log("params With Type");
     return {
       type: type,
-      q: searchParams.get("q"),
+      search: searchParams.get("search"),
     };
   };
 
   const paramsNoType = () => {
     // console.log("params No Type");
     return {
-      q: searchParams.get("q") || "",
+      search: searchParams.get("search") || "",
     };
   };
 
@@ -56,44 +60,24 @@ const ProductsList = () => {
   }, []);
 
   useEffect(() => {
-    getProductsData();
+    fetchByParams();
     if (type === "all") {
       setSearchParams(paramsNoType());
     } else {
       setSearchParams(paramsWithType());
     }
-  }, [(type, searchParams)]);
+  }, [type, searchParams]);
+  useEffect(() => {
+    getProductsData();
+  }, [searchParams]);
+  // const handleChange = (e, p) => {
+  //   setPage(p);
+  // };
 
   // paginate
-  const Search = styled("div")(({ theme }) => ({
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  }));
-
-  const SearchIconWrapper = styled("div")(({ theme }) => ({
-    className: "search",
-    padding: theme.spacing(0, 2),
-    height: "90%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }));
 
   const [pageNumber, setPageNumber] = useState(0);
-  const productsLimit = 3;
+  const productsLimit = 10;
   const productVisited = pageNumber * productsLimit;
   const pageCount = Math.ceil(products.length / productsLimit);
   // let sliceTwoIndex = productVisited + productsLimit;
@@ -105,8 +89,7 @@ const ProductsList = () => {
       <div className="filter">
         <Filter type={type} setType={setType} />
       </div>
-      <div className="container">
-        <LiveSearch />
+      <div className="container1">
         {products
           ? products
               // .slice(productVisited, sliceTwoIndex)
@@ -121,6 +104,28 @@ const ProductsList = () => {
                     marginTop: "130px",
                   }}
                 >
+                  <CardMedia
+                    sx={{
+                      height: "50",
+                      alignItems: "center",
+                      marginBottom: "auto",
+                    }}
+                    component="img"
+                    alt={item.title}
+                    height="50"
+                    src={item.img}
+                  />
+                  {/* <CardMedia
+                    sx={{
+                      height: "150",
+                      alignItems: "center",
+                      marginBottom: "auto",
+                    }}
+                    component="img"
+                    alt={item.title}
+                    height="200"
+                    // image={item.img1}
+                  /> */}
                   <CardContent
                     sx={{ marginLeft: "20px", marginBottom: "200px" }}
                   >
@@ -154,17 +159,6 @@ const ProductsList = () => {
                     >
                       {item.price}
                     </Typography>
-                    <CardMedia
-                      sx={{
-                        height: "50",
-                        alignItems: "center",
-                        marginBottom: "auto",
-                      }}
-                      component="img"
-                      alt={item.title}
-                      height="50"
-                      image={item.img}
-                    />
                   </CardContent>
                   <CardActions
                     sx={{
@@ -172,7 +166,7 @@ const ProductsList = () => {
                       marginBottom: "30px",
                     }}
                   >
-                    {/* <NavLink to={`/edit/${item.id}`}>
+                    <NavLink to={`/edit/${item.id}`}>
                       <Button
                         className="btn1"
                         justifyContent="end"
@@ -181,7 +175,7 @@ const ProductsList = () => {
                       >
                         Edit
                       </Button>
-                    </NavLink> */}
+                    </NavLink>
                     <Button
                       sx={{
                         marginRight: "20px",
@@ -208,7 +202,7 @@ const ProductsList = () => {
                 </Card>
               ))
           : null}
-        <ReactPaginate
+        {/* <ReactPaginate
           previousLabel={"Back"}
           nextLabel={"Forward"}
           pageCount={pageCount}
@@ -217,7 +211,7 @@ const ProductsList = () => {
           nextLinkClassName={"nextBttn"}
           disabledClassName={"paginationDisabled"}
           onPageChange={changePage}
-        />
+        /> */}
       </div>
     </div>
   );

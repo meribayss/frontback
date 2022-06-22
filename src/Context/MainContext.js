@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useReducer, createContext } from "react";
 // import axios from "axios";
 import { API } from "../Config";
-import { useLocation } from "react-router-dom";
 
 export const mainContext = createContext();
 
@@ -10,6 +9,7 @@ const INIT_STATE = {
   products: [],
   exactproduct: {},
   productToEdit: {},
+
   //   uaer: {},
 };
 
@@ -30,7 +30,6 @@ const reducer = (state = INIT_STATE, action) => {
 
 const MainContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
-  const location = useLocation();
 
   const getProductsData = async () => {
     let { data } = await axios.get(API);
@@ -40,23 +39,40 @@ const MainContextProvider = ({ children }) => {
     });
   };
 
-  //   console.log(state.products, "List of products in context");
+  // console.log(state.products, "List of products in context");
 
   const getExactProductData = async (id) => {
-    let { data } = await axios(`houseshop.herokuapp.com/products/${id}`);
+    let { data } = await axios(`${API}/${id}`);
     dispatch({
       type: "GET_EXACT_PRODUCT_DATA",
       payload: data,
     });
   };
 
-  const editProduct = async (id) => {
-    let { data } = await axios(`houseshop.herokuapp.com/products/update/${id}`);
+  const editProduct = async (newProduct, id) => {
+    console.log(id, newProduct, "hey test");
+    let token = localStorage.getItem("access");
+    console.log(token);
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    let formData = new FormData();
+    formData.append("price", newProduct.price);
+    formData.append("title", newProduct.title);
+    formData.append("category", newProduct.type);
+    formData.append("desc", newProduct.desc);
+    // formData.append("available", newProduct.available);
+
+    let { data } = await axios.patch(`${API}/update/${id}/`, formData, config);
     dispatch({
       type: "EDIT_PRODUCT",
       payload: data,
     });
-    getProducts();
+    getProductsData();
   };
 
   //   const getUserData = async (email) => {
@@ -81,27 +97,11 @@ const MainContextProvider = ({ children }) => {
     formData.append("price", newProduct.price);
     formData.append("title", newProduct.title);
     formData.append("category", newProduct.category);
-    formData.append("description", newProduct.description);
+    formData.append("desc", newProduct.desc);
     formData.append("author", newProduct.author);
-    formData.append("img", newProduct.img);
 
     await axios.post(`${API}/create/`, formData, config);
     getProductsData();
-  };
-  const getProducts = async (value) => {
-    const { data } = await axios.get(`${API}/title=?${value}`);
-    dispatch({
-      type: "GET_PRODUCTS",
-      payload: data,
-    });
-  };
-
-  const searchProduct = async (value) => {
-    const { data } = await axios.get(`${API}/title=?${value}`);
-    dispatch({
-      type: "GET_PRODUCTS",
-      payload: data,
-    });
   };
 
   const deleteProduct = async (id) => {
@@ -113,13 +113,40 @@ const MainContextProvider = ({ children }) => {
     };
     await axios.delete(`${API}/delete/${id}`, config);
     getProductsData();
-    getProducts();
   };
 
-  const saveProduct = async (newProduct) => {
-    await axios.patch(`${API}/update/${newProduct.get("id")}`, newProduct);
+  const saveProduct = async (newProduct, id) => {
+    let token = localStorage.getItem("access");
+    console.log(token, "token");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.patch(`${API}/update/${id}`, newProduct, config);
     getProductsData();
-    getProducts();
+  };
+
+  const fetchByParams = async (value) => {
+    if (value === "all") {
+      getProductsData();
+    } else if (
+      value === "USA" ||
+      value === "South Korea" ||
+      value === "Jamaica" ||
+      value === "Mexico" ||
+      value === "Greece" ||
+      value === "Thailand" ||
+      value === "Maldives"
+    ) {
+      const { data } = await axios(
+        `${API}/?price=&title=&author=&category=${value}`
+      );
+      dispatch({
+        type: "GET_PRODUCTS_DATA",
+        payload: data.results,
+      });
+    }
   };
 
   return (
@@ -129,7 +156,6 @@ const MainContextProvider = ({ children }) => {
         exactproduct: state.exactproduct,
         productToEdit: state.productToEdit,
         // user: state.user,
-        getProducts,
         getProductsData,
         getExactProductData,
         // getUserData,
@@ -137,7 +163,7 @@ const MainContextProvider = ({ children }) => {
         deleteProduct,
         editProduct,
         saveProduct,
-        searchProduct,
+        fetchByParams,
       }}
     >
       {children}

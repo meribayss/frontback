@@ -17,8 +17,8 @@ const Pricing = () => {
             <span className="bar"></span>
             <div className="par">
               <p>⌂ 320 sqm ⌂</p>
-              <p>- Featured -</p>
-              <p>- Private Quarters -</p>
+              <p>✼ 3 bedrooms ✼</p>
+              <p>- 156ft. pool -</p>
               <btn
                 onClick={() =>
                   window.open(
@@ -43,8 +43,8 @@ const Pricing = () => {
             <span className="bar"></span>
             <div className="par">
               <p>⌂ 412 sqm ⌂</p>
-              <p>- Featured -</p>
-              <p>- Private Quarters -</p>
+              <p>✼ 6 bedrooms ✼</p>
+              <p>- an amazing view -</p>
               <btn
                 onClick={() =>
                   window.open(
@@ -68,8 +68,8 @@ const Pricing = () => {
           <span className="bar"></span>
           <div className="par">
             <p>⌂ 580 sqm ⌂</p>
-            <p>- Featured -</p>
-            <p>- Private Quarters -</p>
+            <p>✼ 8 bedrooms ✼</p>
+            <p>- antique architecture -</p>
             <btn
               onClick={() =>
                 window.open(
