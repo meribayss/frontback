@@ -148,7 +148,7 @@ const ProductsList = () => {
                       marginBottom: "30px",
                     }}
                   >
-                    {/* <NavLink to={`/edit/${item.id}`}>
+                    <NavLink to={`/edit/${item.id}`}>
                       <Button
                         className="btn1"
                         justifyContent="end"
@@ -157,7 +157,7 @@ const ProductsList = () => {
                       >
                         Edit
                       </Button>
-                    </NavLink> */}
+                    </NavLink>
                     <Button
                       sx={{
                         marginRight: "20px",

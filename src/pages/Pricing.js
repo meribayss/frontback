@@ -5,7 +5,7 @@ import HeroImage from "../Components/HeroImage/HeroImage";
 const Pricing = () => {
   return (
     <div>
-      <HeroImage heading="PRICING." text="Choose your trip." />
+      <HeroImage heading="Videos" text="See what we can offer!" />
       <PricingCards />
     </div>
   );

@@ -22,15 +22,17 @@ const Cart = () => {
             alignItems: "center",
           }}
         >
-          <thead>
-            <tr style={{ display: "flex", border: "1px solid white" }}>
-              <th>Фото</th>
-              <th>Название</th>
-              <th>Цена</th>
-              <th>Количество</th>
-              <th>Сумма продукта</th>
-            </tr>
-          </thead>
+          <div>
+            <thead>
+              <tr style={{ display: "flex", border: "1px solid white" }}>
+                <th>Фото</th>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Сумма продукта</th>
+              </tr>
+            </thead>
+          </div>
           <tbody>
             {cart.products
               ? cart.products.map((elem) => (

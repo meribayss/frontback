@@ -53,3 +53,7 @@
   color: white;
   background-color: rgba(0, 145, 212, 0.904);
 }
+
+.search {
+  size: 100px;
+}

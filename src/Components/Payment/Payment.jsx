@@ -70,7 +70,7 @@ const CreditCard = () => {
           <br />
           <div className="row">
             <div
-              className="col=sm-8"
+              className="col-sm-8"
               style={{
                 ...{ "padding-right": "12em" },
                 ...{ "padding-left": "1em" },
@@ -129,7 +129,7 @@ const CreditCard = () => {
                 type="tel"
                 name="cvc"
                 maxlength="3"
-                className=" form-control card"
+                className=" form-control-card"
                 value={cvc}
                 pattern="\d*"
                 onChange={(e) => {
@@ -142,7 +142,7 @@ const CreditCard = () => {
           <br />
           <input
             type="submit"
-            className="btn btn-danger form-control"
+            className="btn-btn-danger-form-control"
             value="ПОДТВЕРДИТЬ"
           />
         </form>
