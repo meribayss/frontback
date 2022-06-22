@@ -1,10 +1,20 @@
 .card {
-  background-color: aliceblue;
+  background: rgb(252, 252, 252);
   text-align: center;
   padding: 1rem;
+  margin-top: 263px;
+  margin-bottom: 210px;
+  border-radius: 32px;
 }
 /* .form-control {
   display: flex;
   size: 300px;
   text-align: center;
 } */
+
+.card-body {
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 249px;
+}
