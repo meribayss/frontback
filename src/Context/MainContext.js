@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useReducer, createContext } from "react";
 // import axios from "axios";
 import { API } from "../Config";
+import { useLocation } from "react-router-dom";
 
 export const mainContext = createContext();
 
@@ -29,6 +30,7 @@ const reducer = (state = INIT_STATE, action) => {
 
 const MainContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
+  const location = useLocation();
 
   const getProductsData = async () => {
     let { data } = await axios.get(API);
@@ -38,7 +40,7 @@ const MainContextProvider = ({ children }) => {
     });
   };
 
-  console.log(state.products, "List of products in context");
+  //   console.log(state.products, "List of products in context");
 
   const getExactProductData = async (id) => {
     let { data } = await axios(`houseshop.herokuapp.com/products/${id}`);
@@ -54,6 +56,7 @@ const MainContextProvider = ({ children }) => {
       type: "EDIT_PRODUCT",
       payload: data,
     });
+    getProducts();
   };
 
   //   const getUserData = async (email) => {
@@ -84,6 +87,21 @@ const MainContextProvider = ({ children }) => {
     await axios.post(`${API}/create/`, formData, config);
     getProductsData();
   };
+  const getProducts = async (value) => {
+    const { data } = await axios.get(`${API}/title=?${value}`);
+    dispatch({
+      type: "GET_PRODUCTS",
+      payload: data,
+    });
+  };
+
+  const searchProduct = async (value) => {
+    const { data } = await axios.get(`${API}/title=?${value}`);
+    dispatch({
+      type: "GET_PRODUCTS",
+      payload: data,
+    });
+  };
 
   const deleteProduct = async (id) => {
     let token = localStorage.getItem("access");
@@ -94,11 +112,13 @@ const MainContextProvider = ({ children }) => {
     };
     await axios.delete(`${API}/delete/${id}`, config);
     getProductsData();
+    getProducts();
   };
 
   const saveProduct = async (newProduct) => {
     await axios.patch(`${API}/update/${newProduct.get("id")}`, newProduct);
     getProductsData();
+    getProducts();
   };
 
   return (
@@ -108,6 +128,7 @@ const MainContextProvider = ({ children }) => {
         exactproduct: state.exactproduct,
         productToEdit: state.productToEdit,
         // user: state.user,
+        getProducts,
         getProductsData,
         getExactProductData,
         // getUserData,
@@ -115,6 +136,7 @@ const MainContextProvider = ({ children }) => {
         deleteProduct,
         editProduct,
         saveProduct,
+        searchProduct,
       }}
     >
       {children}

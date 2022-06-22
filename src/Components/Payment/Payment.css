@@ -1,5 +1,5 @@
 .container-payment {
-  padding-top: 40px;
+  padding-top: 100px;
   padding-bottom: 40px;
   font-family: "Gilroy";
   font-style: normal;
@@ -92,4 +92,27 @@ form {
 
 .rccs__card--unknown > div {
   background-image: url("../../Components/Payment/payment.jpeg");
+  margin-left: 16px;
+}
+
+.col-sm-11 {
+  margin-left: 80px;
+}
+/* .row {
+  margin-left: 80px;
+} */
+.col-sm-4 {
+  margin-left: 172px;
+}
+.form-control-card {
+  margin-left: 83px;
+  margin-top: 35px;
+}
+
+.col-sm-8 {
+  margin-left: 66px;
+}
+
+.btn-btn-danger-form-control {
+  margin-left: 40px;
 }
