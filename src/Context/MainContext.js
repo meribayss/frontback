@@ -83,6 +83,7 @@ const MainContextProvider = ({ children }) => {
     formData.append("category", newProduct.category);
     formData.append("description", newProduct.description);
     formData.append("author", newProduct.author);
+    formData.append("img", newProduct.img);
 
     await axios.post(`${API}/create/`, formData, config);
     getProductsData();

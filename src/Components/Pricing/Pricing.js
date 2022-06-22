@@ -7,22 +7,23 @@ const Pricing = () => {
   return (
     <div className="pricing">
       <div className="card-container">
-        <div className="card">
-          <h3>- Basic -</h3>
-          <span className="bar"></span>
-          <img
-            class="card-img-top"
-            src="https://media0.giphy.com/media/l3vR4Gm8ZP1PbgA7K/giphy.gif"
-            alt="Card image cap"
-          ></img>
-          <div className="par">
-            <p>- Views -</p>
-            <p>- Featured -</p>
-            <p>- Private Quarters -</p>
+        <div>
+          <div className="card">
+            <img
+              class="card-img-top"
+              src="https://media0.giphy.com/media/l3vR4Gm8ZP1PbgA7K/giphy.gif"
+              alt="Card image cap"
+            ></img>
+            <span className="bar"></span>
+            <div className="par">
+              <p>- Views -</p>
+              <p>- Featured -</p>
+              <p>- Private Quarters -</p>
+              <Link to="/productlist" className="btn">
+                Watch
+              </Link>
+            </div>
           </div>
-          <Link to="/productlist" className="btn">
-            Watch
-          </Link>
         </div>
         <div className="card">
           <h3>- Suite -</h3>

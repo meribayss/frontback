@@ -82,8 +82,9 @@ const ProductsList = () => {
   }));
 
   const SearchIconWrapper = styled("div")(({ theme }) => ({
+    className: "search",
     padding: theme.spacing(0, 2),
-    height: "100%",
+    height: "90%",
     position: "absolute",
     pointerEvents: "none",
     display: "flex",
@@ -153,6 +154,17 @@ const ProductsList = () => {
                     >
                       {item.price}
                     </Typography>
+                    <CardMedia
+                      sx={{
+                        height: "50",
+                        alignItems: "center",
+                        marginBottom: "auto",
+                      }}
+                      component="img"
+                      alt={item.title}
+                      height="50"
+                      image={item.img}
+                    />
                   </CardContent>
                   <CardActions
                     sx={{
