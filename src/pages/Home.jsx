@@ -106,12 +106,13 @@ const Home = () => {
             alt=""
           />
           <div>
-            <h3>Casa La Vida Dulce</h3>
+            <h3>home</h3>
             <h6>Malé,Maldives</h6>
             <p>
               Inspired by dramatic, natural tropical elements and beautiful
               landscapes this one-of-a-kind Villa offers guests dramatic views
-              of the Pacific Ocean from all points on the property.
+              of the Pacific Ocean from all points on the property.homes
+              ohuennyu house
             </p>
             <a href="#" class="btn">
               {" "}
