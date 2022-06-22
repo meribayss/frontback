@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { productContext } from "../../Context/ProductContext";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -12,11 +11,15 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { cartContext } from "../../Context/CartContext";
 import "../../Components/Products/ProductsList.css";
 import ReactPaginate from "react-paginate";
+import { mainContext } from "../../Context/MainContext";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { FavoriteContext } from "../../Context/FavoriteContext";
 
 const ProductsList = () => {
-  const { getProducts, products, deleteProduct } = useContext(productContext);
-
+  const { getProductsData, products, deleteProduct } = useContext(mainContext);
   const { addProductToCart } = useContext(cartContext);
+  const { addProductToFavorite } = useContext(FavoriteContext);
+  // const { addProductToCart } = useContext(cartContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
   // Хук useSearchParams предназначен для чтения и изменения строки запроса в URL для текущего маршрута. По аналогии с хуком useState возвращает значение и функцию для изменения этого значения.
@@ -49,14 +52,18 @@ const ProductsList = () => {
     }
   }, []);
 
-  useEffect(() => {
-    getProducts();
-    if (type === "all") {
-      setSearchParams(paramsNoType());
-    } else {
-      setSearchParams(paramsWithType());
-    }
-  }, [type, searchParams]);
+  useEffect(
+    () => {
+      getProductsData();
+      //   if (type === "all") {
+      //     setSearchParams(paramsNoType());
+      //   } else {
+      //     setSearchParams(paramsWithType());
+      //   }
+    },
+    []
+    //  [type, searchParams]
+  );
 
   // paginate
 
@@ -75,92 +82,97 @@ const ProductsList = () => {
       </div>
       <div className="container">
         {products
-          ? products.slice(productVisited, sliceTwoIndex).map((item) => (
-              <Card
-                key={item.id}
-                className="card"
-                sx={{
-                  borderRadius: "10px",
-                  width: "470px",
-                  height: "400px ",
-                  marginBottom: "50px",
-                }}
-              >
-                <CardMedia
+          ? products
+              // .slice(productVisited, sliceTwoIndex)
+              .map((item) => (
+                <Card
+                  key={item.id}
+                  className="card"
                   sx={{
-                    height: "150",
-                    alignItems: "center",
-                    marginBottom: "auto",
-                  }}
-                  component="img"
-                  alt={item.title}
-                  height="200"
-                  image={item.img1}
-                />
-                <CardContent sx={{ marginLeft: "20px" }}>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {item.title}
-                  </Typography>
-
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    height="25px"
-                  >
-                    {item.description}
-                  </Typography>
-
-                  <Typography
-                    sx={{
-                      fontWeight: "bold",
-                      fontSize: "15px",
-                      marginTop: "20px",
-                    }}
-                    variant="body2"
-                    color="text.secondary"
-                  >
-                    {item.price}
-                  </Typography>
-                </CardContent>
-                <CardActions
-                  sx={{
-                    justifyContent: "center",
-                    marginBottom: "30px",
+                    borderRadius: "10px",
+                    width: "470px",
+                    // height: "400px ",
+                    marginBottom: "50px",
                   }}
                 >
-                  <NavLink to={`/edit/${item.id}`}>
+                  <CardMedia
+                    sx={{
+                      height: "150",
+                      alignItems: "center",
+                      marginBottom: "auto",
+                    }}
+                    component="img"
+                    alt={item.title}
+                    height="200"
+                    // image={item.img1}
+                  />
+                  <CardContent sx={{ marginLeft: "20px" }}>
+                    <Typography gutterBottom variant="h5" component="div">
+                      {item.title}
+                    </Typography>
+
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      height="25px"
+                    >
+                      {item.description}
+                    </Typography>
+
+                    <Typography
+                      sx={{
+                        fontWeight: "bold",
+                        fontSize: "15px",
+                        marginTop: "20px",
+                      }}
+                      variant="body2"
+                      color="text.secondary"
+                    >
+                      {item.price}
+                    </Typography>
+                  </CardContent>
+                  <CardActions
+                    sx={{
+                      justifyContent: "center",
+                      marginBottom: "30px",
+                    }}
+                  >
+                    <NavLink to={`/edit/${item.id}`}>
+                      <Button
+                        className="btn1"
+                        justifyContent="end"
+                        size="small"
+                        variant="outlined"
+                      >
+                        Edit
+                      </Button>
+                    </NavLink>
                     <Button
-                      className="btn1"
-                      justifyContent="end"
+                      sx={{
+                        marginRight: "20px",
+                      }}
+                      onClick={() => deleteProduct(item.id)}
+                      className="btn"
                       size="small"
                       variant="outlined"
                     >
-                      Edit
+                      Delete <RestoreFromTrashIcon />
                     </Button>
-                  </NavLink>
-                  <Button
-                    sx={{
-                      marginRight: "20px",
-                    }}
-                    onClick={() => deleteProduct(item.id)}
-                    className="btn"
-                    size="small"
-                    variant="outlined"
-                  >
-                    Delete <RestoreFromTrashIcon />
-                  </Button>
-                  <NavLink to={`/details/${item.id}`}>
-                    <Button className="btn" size="small" variant="outlined">
-                      Details
-                    </Button>
-                  </NavLink>
+                    <NavLink to={`/details/${item.id}`}>
+                      <Button className="btn" size="small" variant="outlined">
+                        Details
+                      </Button>
+                    </NavLink>
 
-                  <Button onClick={(e) => addProductToCart(item)}>
-                    <AddShoppingCartIcon />
-                  </Button>
-                </CardActions>
-              </Card>
-            ))
+                    <Button onClick={(e) => addProductToCart(item)}>
+                      <AddShoppingCartIcon />
+                    </Button>
+                    <Button onClick={(e) => addProductToFavorite(item)}>
+                      <FavoriteBorderIcon />
+                    </Button>
+                  </CardActions>
+                </Card>
+              ))
           : null}
         <ReactPaginate
           previousLabel={"Назад"}

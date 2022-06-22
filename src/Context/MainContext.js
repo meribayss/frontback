@@ -1,6 +1,9 @@
-import React, { useReducer } from "react";
 import axios from "axios";
-export const mainContext = React.createContext();
+import React, { useReducer, createContext } from "react";
+// import axios from "axios";
+import { API } from "../Config";
+
+export const mainContext = createContext();
 
 const INIT_STATE = {
   products: [],
@@ -28,12 +31,14 @@ const MainContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
   const getProductsData = async () => {
-    let { data } = await axios("houseshop.herokuapp.com/products");
+    let { data } = await axios.get(API);
     dispatch({
       type: "GET_PRODUCTS_DATA",
-      payload: data,
+      payload: data.results,
     });
   };
+
+  console.log(state.products, "List of products in context");
 
   const getExactProductData = async (id) => {
     let { data } = await axios(`houseshop.herokuapp.com/products/${id}`);
@@ -60,27 +65,39 @@ const MainContextProvider = ({ children }) => {
   //   };
 
   const addProduct = async (newProduct) => {
+    let token = localStorage.getItem("access");
+    console.log(token);
     const config = {
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${token}`,
+      },
     };
-    await axios.post(
-      "houseshop.herokuapp.com/products/create/",
-      newProduct,
-      config
-    );
+    console.log(config);
+    let formData = new FormData();
+    formData.append("price", newProduct.price);
+    formData.append("title", newProduct.title);
+    formData.append("category", newProduct.category);
+    formData.append("description", newProduct.description);
+    formData.append("author", newProduct.author);
+
+    await axios.post(`${API}/create/`, formData, config);
     getProductsData();
   };
 
   const deleteProduct = async (id) => {
-    await axios.delete(`houseshop.herokuapp.com/products/delete/${id}`);
+    let token = localStorage.getItem("access");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    await axios.delete(`${API}/delete/${id}`, config);
     getProductsData();
   };
 
   const saveProduct = async (newProduct) => {
-    await axios.patch(
-      `houseshop.herokuapp.com/products/${newProduct.get("id")}`,
-      newProduct
-    );
+    await axios.patch(`${API}/update/${newProduct.get("id")}`, newProduct);
     getProductsData();
   };
 

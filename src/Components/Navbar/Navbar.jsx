@@ -45,18 +45,39 @@ const Navbar = () => {
       <Link to="/">
         <h1 id="dream">DreamHome</h1>
       </Link>
-      <ul>
-        <Link to="/cart">
-          <FaCartPlus
-            size={27}
-            style={{ color: "#ffffff", marginRight: "2rem" }}
-          />
-        </Link>
-        <FaRegHeart
-          size={27}
-          style={{ color: "#ffffff", marginRight: "2rem" }}
-        />
-        <Link to="/login">
+      <div className="icons">
+        <ul className="iconsss">
+          <Link to="/cart">
+            <FaCartPlus
+              size={27}
+              style={{ color: "#ffffff", marginRight: "2rem" }}
+            />
+          </Link>
+          <Link to="/favorite">
+            <FaRegHeart
+              size={27}
+              style={{ color: "#ffffff", marginRight: "2rem" }}
+            />
+          </Link>
+          <li>
+            <Link
+              to="/login"
+              size={27}
+              style={{ color: "#ffffff", marginRight: "2rem" }}
+            >
+              Login
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/register"
+              size={27}
+              style={{ color: "#ffffff", marginRight: "2rem" }}
+            >
+              Register
+            </Link>
+          </li>
+          {/* <Link to="/login">
           <FaSignInAlt
             size={27}
             style={{ color: "#ffffff", marginRight: "2rem" }}
@@ -67,8 +88,9 @@ const Navbar = () => {
             size={27}
             style={{ color: "#ffffff", marginRight: "2rem" }}
           />
-        </Link>
-      </ul>
+        </Link> */}
+        </ul>
+      </div>
       <div className="hamburger" onClick={handleClick}>
         {click ? (
           <FaTimes size={20} style={{ color: "#fff" }} />

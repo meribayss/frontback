@@ -9,19 +9,21 @@ import Cart from "./Components/Cart/Cart";
 import ProductList from "../src/Components/Products/ProductsList";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
+import Favorite from "./Components/Favorite/Favorite";
 
 const Mainroutes = () => {
   return (
     <div>
       <Routes>
-        <Route exact path="/register" element={<Register></Register>} />
-        <Route exact path="/login" element={<Login></Login>} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/login" element={<Login />} />
         <Route path="/" element={<Home />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/training" element={<Training />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/favorite" element={<Favorite />} />
         <Route path="/productlist" element={<ProductList />} />
         {/* <Route path="/details/:id" element={<ProductsDetails />} /> */}
         {/* <Route path="/edit/:id" element={<EditProduct />} /> */}

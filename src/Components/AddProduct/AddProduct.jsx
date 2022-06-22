@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 // import { productContext } from "../../Context/ProductContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { mainContext } from "../../Context/MainContext";
 
 const initObj = {
   price: 0,
@@ -16,7 +17,7 @@ const initObj = {
 };
 
 const AddProduct = () => {
-  // const { addProduct } = useContext(productContext);
+  const { addProduct } = useContext(mainContext);
   const [inpValues, setInpValues] = useState(initObj);
 
   const alertToastify = () => {
@@ -49,8 +50,8 @@ const AddProduct = () => {
       inpValues.price.toString().trim() === "" ||
       inpValues.title.trim() === "" ||
       inpValues.category.trim() === "" ||
-      inpValues.description.trim() === ""
-      // inpValues.author.trim() === ""
+      inpValues.description.trim() === "" ||
+      inpValues.author.trim() === ""
       // inpValues.img1.trim() === "" ||
       // inpValues.img2.trim() === "" ||
       // inpValues.img3.trim() === ""
@@ -59,7 +60,7 @@ const AddProduct = () => {
       return;
     }
     e.preventDefault();
-    // addProduct(inpValues);
+    addProduct(inpValues);
     clearInput();
   };
 
@@ -83,7 +84,9 @@ const AddProduct = () => {
               name="title"
               value={inpValues.title}
             ></input>
-            <label for="cars">Choose a country:</label>
+            {/* <label value={inpValues.category} name="category" for="cars">
+              Choose a country:
+            </label>
             <select id="country" name="country">
               <option value="usa">USA</option>
               <option value="southKorea">South Korea</option>
@@ -92,15 +95,15 @@ const AddProduct = () => {
               <option value="greece">Greece</option>
               <option value="thailand">Thailand</option>
               <option value="maldives">Maldives</option>
-            </select>
+            </select> */}
 
-            {/* <label>Category</label>
+            <label>Category</label>
             <input
               type="text"
               onChange={(e) => handleChange(e)}
               name="category"
               value={inpValues.category}
-            ></input> */}
+            ></input>
             <label>Description</label>
             <input
               type="text"
@@ -108,13 +111,13 @@ const AddProduct = () => {
               name="description"
               value={inpValues.description}
             ></input>
-            {/* <label>Author</label>
+            <label>Author</label>
             <input
               type="text"
               onChange={(e) => handleChange(e)}
               name="author"
               value={inpValues.author}
-            ></input> */}
+            ></input>
             {/* <label>IMG1</label>
             <input
               type="text"

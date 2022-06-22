@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import API_AUTH from "../Config";
+import "./Login.css";
 
 const Login = () => {
   const [inpEmail, setEmail] = useState("");
@@ -13,7 +14,7 @@ const Login = () => {
   const notify = (error) => {
     toast.error(Object.values(error).toString().replace(/,/gi, ""), {
       icon: false,
-      theme: "dark",
+      // theme: "dark",
     });
   };
 
@@ -62,6 +63,7 @@ const Login = () => {
             <input
               type="text"
               className="form-control"
+              size={"200px"}
               onChange={(e) => setEmail(e.target.value)}
               name="email"
               key="email"

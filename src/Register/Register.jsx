@@ -144,6 +144,7 @@ const Register = () => {
               placeholder="*Username"
             />
           </div>
+
           <button
             onClick={handleClick}
             className="btn btn-light"
