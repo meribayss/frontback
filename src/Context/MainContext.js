@@ -127,6 +127,28 @@ const MainContextProvider = ({ children }) => {
     getProductsData();
   };
 
+  const fetchByParams = async (value) => {
+    if (value === "all") {
+      getProductsData();
+    } else if (
+      value === "USA" ||
+      value === "South Korea" ||
+      value === "Jamaica" ||
+      value === "Mexico" ||
+      value === "Greece" ||
+      value === "Thailand" ||
+      value === "Maldives"
+    ) {
+      const { data } = await axios(
+        `${API}/?price=&title=&author=&category=${value}`
+      );
+      dispatch({
+        type: "GET_PRODUCTS_DATA",
+        payload: data.results,
+      });
+    }
+  };
+
   return (
     <mainContext.Provider
       value={{
@@ -141,6 +163,7 @@ const MainContextProvider = ({ children }) => {
         deleteProduct,
         editProduct,
         saveProduct,
+        fetchByParams,
       }}
     >
       {children}

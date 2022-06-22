@@ -17,8 +17,13 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { FavoriteContext } from "../../Context/FavoriteContext";
 
 const ProductsList = () => {
-  const { getProductsData, products, deleteProduct, editProduct } =
-    useContext(mainContext);
+  const {
+    getProductsData,
+    products,
+    deleteProduct,
+    editProduct,
+    fetchByParams,
+  } = useContext(mainContext);
   const { addProductToCart } = useContext(cartContext);
   const { addProductToFavorite } = useContext(FavoriteContext);
   // const { addProductToCart } = useContext(cartContext);
@@ -35,14 +40,14 @@ const ProductsList = () => {
     // console.log("params With Type");
     return {
       type: type,
-      q: searchParams.get("q"),
+      search: searchParams.get("search"),
     };
   };
 
   const paramsNoType = () => {
     // console.log("params No Type");
     return {
-      q: searchParams.get("q") || "",
+      search: searchParams.get("search") || "",
     };
   };
 
@@ -54,18 +59,20 @@ const ProductsList = () => {
     }
   }, []);
 
-  useEffect(
-    () => {
-      getProductsData();
-      //   if (type === "all") {
-      //     setSearchParams(paramsNoType());
-      //   } else {
-      //     setSearchParams(paramsWithType());
-      //   }
-    },
-    []
-    //  [type, searchParams]
-  );
+  useEffect(() => {
+    fetchByParams();
+    if (type === "all") {
+      setSearchParams(paramsNoType());
+    } else {
+      setSearchParams(paramsWithType());
+    }
+  }, [type, searchParams]);
+  useEffect(() => {
+    getProductsData();
+  }, [searchParams]);
+  // const handleChange = (e, p) => {
+  //   setPage(p);
+  // };
 
   // paginate
 
@@ -97,6 +104,17 @@ const ProductsList = () => {
                     marginTop: "130px",
                   }}
                 >
+                  <CardMedia
+                    sx={{
+                      height: "50",
+                      alignItems: "center",
+                      marginBottom: "auto",
+                    }}
+                    component="img"
+                    alt={item.title}
+                    height="50"
+                    src={item.img}
+                  />
                   {/* <CardMedia
                     sx={{
                       height: "150",
@@ -184,7 +202,7 @@ const ProductsList = () => {
                 </Card>
               ))
           : null}
-        <ReactPaginate
+        {/* <ReactPaginate
           previousLabel={"Back"}
           nextLabel={"Forward"}
           pageCount={pageCount}
@@ -193,7 +211,7 @@ const ProductsList = () => {
           nextLinkClassName={"nextBttn"}
           disabledClassName={"paginationDisabled"}
           onPageChange={changePage}
-        />
+        /> */}
       </div>
     </div>
   );
