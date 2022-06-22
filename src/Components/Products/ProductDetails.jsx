@@ -18,7 +18,7 @@ import { cartContext } from "../../Context/CartContext";
 import SwiperCore, { Thumbs } from "swiper";
 import { mainContext } from "../../Context/MainContext";
 
-SwiperCore.use([Thumbs]);
+// SwiperCore.use([Thumbs]);
 
 const ProductDetails = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);

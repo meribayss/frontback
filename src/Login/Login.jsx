@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import API_AUTH from "../Config";
+import "./Login.css";
 
 const Login = () => {
   const [inpEmail, setEmail] = useState("");
@@ -13,11 +14,12 @@ const Login = () => {
   const notify = (error) => {
     toast.error(Object.values(error).toString().replace(/,/gi, ""), {
       icon: false,
-      theme: "dark",
+      // theme: "dark",
     });
   };
 
   const registerUser = async (newUser) => {
+    console.log(newUser, "login data");
     const config = {
       headers: { "Content-Type": "multipart/form-data" },
     };
@@ -26,8 +28,7 @@ const Login = () => {
       const { access, refresh } = res.data;
       localStorage.setItem("access", access);
       localStorage.setItem("refresh", refresh);
-      navigate("/productlist");
-      // navigate("/check-token");
+      navigate("/");
     } catch (error) {
       notify(error.response.data);
     }
@@ -42,6 +43,7 @@ const Login = () => {
       form_data.append("password", inpPassword);
       registerUser(form_data);
     }
+    console.log(inpEmail, inpPassword);
   }
 
   return (
@@ -61,6 +63,7 @@ const Login = () => {
             <input
               type="text"
               className="form-control"
+              size={"200px"}
               onChange={(e) => setEmail(e.target.value)}
               name="email"
               key="email"
@@ -77,14 +80,16 @@ const Login = () => {
               placeholder="*Password"
             />
           </div>
-          <button
-            onClick={handleClick}
-            className="btn btn-light"
-            style={{ width: "100%" }}
-          >
-            Login
-          </button>
-          <ToastContainer />
+          <NavLink to="/">
+            <button
+              onClick={handleClick}
+              className="btn btn-light"
+              style={{ width: "100%" }}
+            >
+              Login
+            </button>
+            <ToastContainer />
+          </NavLink>
         </div>
       </div>
     </div>

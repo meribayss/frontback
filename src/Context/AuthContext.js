@@ -35,13 +35,14 @@ const AuthContextProvider = ({ children }) => {
       },
     };
     try {
-      await axios.get(`${API_AUTH}token/refresh/`, config);
+      await axios.get(`${API_AUTH}/check-token/`, config);
       dispatch({
         type: "CHECK_AUTH",
         payload: true,
       });
     } catch (error) {
       if (flag) {
+        refreshToken();
         flag = false;
         checkToken();
       } else {
@@ -59,7 +60,7 @@ const AuthContextProvider = ({ children }) => {
     };
     let refresh = localStorage.getItem("refresh");
     const res = await axios.post(
-      `${API_AUTH}token/refresh/`,
+      `${API_AUTH}/token/refresh/`,
       { refresh },
       config
     );
@@ -71,7 +72,7 @@ const AuthContextProvider = ({ children }) => {
     <authContext.Provider
       value={{
         is_auth: state.is_auth,
-        // checkToken,
+        checkToken,
       }}
     >
       {children}

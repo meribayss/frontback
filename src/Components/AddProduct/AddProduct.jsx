@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { mainContext } from "../../Context/MainContext";
 
 const initObj = {
-  price: 0,
+  price: "",
   title: "",
   category: "",
   description: "",
@@ -84,6 +84,18 @@ const AddProduct = () => {
               name="title"
               value={inpValues.title}
             ></input>
+            {/* <label value={inpValues.category} name="category" for="cars">
+              Choose a country:
+            </label>
+            <select id="country" name="country">
+              <option value="usa">USA</option>
+              <option value="southKorea">South Korea</option>
+              <option value="jamaica">Jamaica</option>
+              <option value="mexico">Mexico</option>
+              <option value="greece">Greece</option>
+              <option value="thailand">Thailand</option>
+              <option value="maldives">Maldives</option>
+            </select> */}
 
             <label>Category</label>
             <input
@@ -127,14 +139,13 @@ const AddProduct = () => {
               name="img3"
               value={inpValues.img3}
             ></input> */}
-
             <button
               onClick={handleSave}
               type="button"
               variant="contained"
               className="btn"
             >
-              Submit
+              Save
             </button>
           </form>
         </div>

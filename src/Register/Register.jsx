@@ -46,7 +46,7 @@ const Register = () => {
     };
     try {
       await axios.post(`${API_AUTH}register/`, newUser, config);
-      loginUser(newUser);
+      // loginUser(newUser);
     } catch (error) {
       notify(error.response.data);
     }

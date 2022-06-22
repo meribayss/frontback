@@ -13,11 +13,14 @@ import "../../Components/Products/ProductsList.css";
 import ReactPaginate from "react-paginate";
 import { mainContext } from "../../Context/MainContext";
 import { Z } from "../../Config";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { FavoriteContext } from "../../Context/FavoriteContext";
 
 const ProductsList = () => {
   const { getProductsData, products, deleteProduct, editProduct } =
     useContext(mainContext);
   const { addProductToCart } = useContext(cartContext);
+  const { addProductToFavorite } = useContext(FavoriteContext);
   // const { addProductToCart } = useContext(cartContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -67,10 +70,10 @@ const ProductsList = () => {
   // paginate
 
   const [pageNumber, setPageNumber] = useState(0);
-  const productsLimit = 6;
+  const productsLimit = 10;
   const productVisited = pageNumber * productsLimit;
   const pageCount = Math.ceil(products.length / productsLimit);
-  let sliceTwoIndex = productVisited + productsLimit;
+  // let sliceTwoIndex = productVisited + productsLimit;
   const changePage = ({ selected }) => {
     setPageNumber(selected);
   };
@@ -89,12 +92,12 @@ const ProductsList = () => {
                   className="card"
                   sx={{
                     borderRadius: "10px",
-                    width: "470px",
+                    // width: "470px",
                     // height: "400px ",
-                    marginBottom: "50px",
+                    marginTop: "130px",
                   }}
                 >
-                  <CardMedia
+                  {/* <CardMedia
                     sx={{
                       height: "150",
                       alignItems: "center",
@@ -104,8 +107,10 @@ const ProductsList = () => {
                     alt={item.title}
                     height="200"
                     // image={item.img1}
-                  />
-                  <CardContent sx={{ marginLeft: "20px" }}>
+                  /> */}
+                  <CardContent
+                    sx={{ marginLeft: "20px", marginBottom: "200px" }}
+                  >
                     <Typography gutterBottom variant="h5" component="div">
                       {item.title}
                     </Typography>
@@ -143,7 +148,7 @@ const ProductsList = () => {
                       marginBottom: "30px",
                     }}
                   >
-                    <NavLink to={`/edit/${item.id}`}>
+                    {/* <NavLink to={`/edit/${item.id}`}>
                       <Button
                         className="btn1"
                         justifyContent="end"
@@ -152,20 +157,19 @@ const ProductsList = () => {
                       >
                         Edit
                       </Button>
-                    </NavLink>
+                    </NavLink> */}
                     <Button
                       sx={{
                         marginRight: "20px",
                       }}
                       onClick={() => deleteProduct(item.id)}
                       className="btn"
-                      size="small"
                       variant="outlined"
                     >
                       Delete <RestoreFromTrashIcon />
                     </Button>
                     <NavLink to={`/details/${item.id}`}>
-                      <Button className="btn" size="small" variant="outlined">
+                      <Button className="btn" variant="outlined">
                         Details
                       </Button>
                     </NavLink>
@@ -173,13 +177,16 @@ const ProductsList = () => {
                     <Button onClick={(e) => addProductToCart(item)}>
                       <AddShoppingCartIcon />
                     </Button>
+                    <Button onClick={(e) => addProductToFavorite(item)}>
+                      <FavoriteBorderIcon />
+                    </Button>
                   </CardActions>
                 </Card>
               ))
           : null}
         <ReactPaginate
-          previousLabel={"Назад"}
-          nextLabel={"Вперед"}
+          previousLabel={"Back"}
+          nextLabel={"Forward"}
           pageCount={pageCount}
           containerClassName={"paginationBttns"}
           previousLinkClassName={"previousBttn"}
