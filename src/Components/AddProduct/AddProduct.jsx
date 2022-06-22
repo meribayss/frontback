@@ -84,6 +84,19 @@ const AddProduct = () => {
               name="title"
               value={inpValues.title}
             ></input>
+            {/* <label value={inpValues.category} name="category" for="cars">
+              Choose a country:
+            </label>
+            <select id="country" name="country">
+              <option value="usa">USA</option>
+              <option value="southKorea">South Korea</option>
+              <option value="jamaica">Jamaica</option>
+              <option value="mexico">Mexico</option>
+              <option value="greece">Greece</option>
+              <option value="thailand">Thailand</option>
+              <option value="maldives">Maldives</option>
+            </select> */}
+
             <label>Category</label>
             <input
               type="text"

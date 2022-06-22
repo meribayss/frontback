@@ -12,10 +12,13 @@ import { cartContext } from "../../Context/CartContext";
 import "../../Components/Products/ProductsList.css";
 import ReactPaginate from "react-paginate";
 import { mainContext } from "../../Context/MainContext";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { FavoriteContext } from "../../Context/FavoriteContext";
 
 const ProductsList = () => {
   const { getProductsData, products, deleteProduct } = useContext(mainContext);
   const { addProductToCart } = useContext(cartContext);
+  const { addProductToFavorite } = useContext(FavoriteContext);
   // const { addProductToCart } = useContext(cartContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -164,6 +167,9 @@ const ProductsList = () => {
 
                     <Button onClick={(e) => addProductToCart(item)}>
                       <AddShoppingCartIcon />
+                    </Button>
+                    <Button onClick={(e) => addProductToFavorite(item)}>
+                      <FavoriteBorderIcon />
                     </Button>
                   </CardActions>
                 </Card>

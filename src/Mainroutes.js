@@ -9,6 +9,7 @@ import Cart from "./Components/Cart/Cart";
 import ProductList from "../src/Components/Products/ProductsList";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
+import Favorite from "./Components/Favorite/Favorite";
 import ProductDetails from "./Components/Products/ProductsDetails";
 
 const Mainroutes = () => {
@@ -23,6 +24,7 @@ const Mainroutes = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/favorite" element={<Favorite />} />
         <Route path="/productlist" element={<ProductList />} />
         <Route path="/details/:id" element={<ProductDetails />} />
         {/* <Route path="/edit/:id" element={<EditProduct />} /> */}

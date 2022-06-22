@@ -17,18 +17,28 @@ const Filter = ({ type, setType }) => {
           value={type}
           onChange={(e) => setType(e.target.value)}
         >
-          <FormControlLabel value="Pizza" control={<Radio />} label="Pizza" />
+          <FormControlLabel value="USA" control={<Radio />} label="USA" />
           <FormControlLabel
-            value="Breakfast"
+            value="South Korea"
             control={<Radio />}
-            label="Breakfast"
+            label="South Korea"
           />
-          <FormControlLabel value="Sushi" control={<Radio />} label="Sushi" />
-          <FormControlLabel value="Drinks" control={<Radio />} label="Drinks" />
           <FormControlLabel
-            value="Desserts"
+            value="Jamaica"
             control={<Radio />}
-            label="Desserts"
+            label="Jamaica"
+          />
+          <FormControlLabel value="Mexico" control={<Radio />} label="Mexico" />
+          <FormControlLabel value="Greece" control={<Radio />} label="Greece" />
+          <FormControlLabel
+            value="Thailand"
+            control={<Radio />}
+            label="Thailand"
+          />
+          <FormControlLabel
+            value="Maldives"
+            control={<Radio />}
+            label="Maldives"
           />
 
           <FormControlLabel value="all" control={<Radio />} label="All Menu" />

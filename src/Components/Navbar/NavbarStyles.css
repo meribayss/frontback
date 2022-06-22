@@ -9,11 +9,10 @@
   z-index: 10;
 }
 
-.header #dream{
- color: whitesmoke;
- margin-left: 0px;
- margin-right: 260px;
-
+.header #dream {
+  color: whitesmoke;
+  margin-left: 0px;
+  margin-right: 260px;
 }
 .header-bg {
   background-color: rgba(0, 0, 0, 0.85);
@@ -68,4 +67,13 @@
   .nav-menu a {
     font-size: 2rem;
   }
+}
+/* .icons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+} */
+.iconsss {
+  flex-direction: row;
+  display: flex;
 }
