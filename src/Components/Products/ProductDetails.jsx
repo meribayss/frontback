@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { productContext } from "../../context/ProductContext";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
@@ -14,69 +13,41 @@ import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import Paper from "@mui/material/Paper";
 import "./Products.css";
 import "swiper/css";
-import { cartContext } from "../../context/CartContext";
+import { cartContext } from "../../Context/CartContext";
 
 import SwiperCore, { Thumbs } from "swiper";
+import { mainContext } from "../../Context/MainContext";
 
 SwiperCore.use([Thumbs]);
 
 const ProductDetails = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   let { id } = useParams();
-  const { getProductsDetails, productDetails } = useContext(productContext);
+  const { getProductsDetails, getExactProductData, exactproduct } =
+    useContext(mainContext);
   useEffect(() => {
-    getProductsDetails(id);
+    // getProductsDetails(id);
+    getExactProductData(id);
   }, []);
   const { addProductToCart } = useContext(cartContext);
   return (
     <section className="product__block-details">
       <Container>
         <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <Swiper
+          <Grid item xs={6} sx={{ background: "white" }}>
+            {/* <Swiper
               spaceBetween={10}
               thumbs={{ swiper: thumbsSwiper }}
               className="mySwiper2"
-            >
-              <SwiperSlide>
+            > */}
+            {/* <SwiperSlide>
                 <img
                   width={400}
                   src={productDetails.img1}
                   alt={productDetails.title}
                 />
               </SwiperSlide>
-              {/* <SwiperSlide>
-                <img
-                  width={400}
-                  src={productDetails.img2}
-                  alt={productDetails.title}
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <img
-                  width={400}
-                  src={productDetails.img2}
-                  alt={productDetails.title}
-                />
-              </SwiperSlide>
-            </Swiper>
-            <Swiper
-              onSwiper={setThumbsSwiper}
-              spaceBetween={10}
-              slidesPerView={4}
-              freeMode={true}
-              watchSlidesProgress={true}
-              className="mySwiper1"
-            >
-              <SwiperSlide>
-                <Paper elevation={3}>
-                  <img
-                    width={80}
-                    src={productDetails.img1}
-                    alt={productDetails.title}
-                  />
-                </Paper>
-              </SwiperSlide> */}
+
               <SwiperSlide>
                 <Paper elevation={3}>
                   <img
@@ -97,7 +68,7 @@ const ProductDetails = () => {
               </SwiperSlide>
             </Swiper>
           </Grid>
-          <Grid item xs={6} sx={{ mt: 5 }}>
+          <Grid item xs={6} sx={{ mt: 5 }}> */}
             {/* <Typography
               variant="h6"
               gutterBottom
@@ -118,10 +89,18 @@ const ProductDetails = () => {
               component="h3"
               sx={{ fontWeight: 700, letterSpacing: 2 }}
             >
-              {productDetails.title}
+              {exactproduct.id}
+            </Typography>
+            <Typography
+              variant="h3"
+              gutterBottom
+              component="h3"
+              sx={{ fontWeight: 700, letterSpacing: 2 }}
+            >
+              title: {exactproduct.title}
             </Typography>
             <Typography variant="body2" gutterBottom>
-              {productDetails.description}
+              {exactproduct.desc}
             </Typography>
             <Alert
               icon={<TrendingDownIcon fontSize="inherit" />}
@@ -150,18 +129,30 @@ const ProductDetails = () => {
                   marginRight: "20px",
                 }}
               >
-                {productDetails.price} с.
+                {exactproduct.price} с.
               </Typography>
               <Typography
                 variant="h4"
                 component="div"
                 sx={{ fontWeight: 700, letterSpacing: 2 }}
               >
-                {productDetails.price} с.
+                {exactproduct.price} с.
+              </Typography>
+              <Typography
+                variant="h5"
+                component="div"
+                sx={{
+                  fontWeight: 300,
+                  letterSpacing: 2,
+                  textDecoration: "line-through",
+                  marginRight: "20px",
+                }}
+              >
+                {exactproduct.category} с.
               </Typography>
             </Box>
             <Button
-              onClick={(e) => addProductToCart(productDetails)}
+              onClick={(e) => addProductToCart(exactproduct)}
               variant="contained"
               color="success"
               startIcon={<AddShoppingCartIcon />}

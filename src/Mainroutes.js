@@ -9,6 +9,8 @@ import Cart from "./Components/Cart/Cart";
 import ProductList from "../src/Components/Products/ProductsList";
 import Register from "./Register/Register";
 import Login from "./Login/Login";
+import ProductDetails from "./Components/Products/ProductDetails";
+import EditProduct from "./Components/AddProduct/EditProduct/EditProduct";
 
 const Mainroutes = () => {
   return (
@@ -23,8 +25,8 @@ const Mainroutes = () => {
         <Route path="/addproduct" element={<AddProduct />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/productlist" element={<ProductList />} />
-        {/* <Route path="/details/:id" element={<ProductsDetails />} /> */}
-        {/* <Route path="/edit/:id" element={<EditProduct />} /> */}
+        <Route path="/details/:id" element={<ProductDetails />} />
+        <Route path="/edit/:id" element={<EditProduct />} />
       </Routes>
     </div>
   );

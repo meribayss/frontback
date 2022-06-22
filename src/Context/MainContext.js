@@ -9,6 +9,7 @@ const INIT_STATE = {
   products: [],
   exactproduct: {},
   productToEdit: {},
+
   //   uaer: {},
 };
 
@@ -38,22 +39,40 @@ const MainContextProvider = ({ children }) => {
     });
   };
 
-  console.log(state.products, "List of products in context");
+  // console.log(state.products, "List of products in context");
 
   const getExactProductData = async (id) => {
-    let { data } = await axios(`houseshop.herokuapp.com/products/${id}`);
+    let { data } = await axios(`${API}/${id}`);
     dispatch({
       type: "GET_EXACT_PRODUCT_DATA",
       payload: data,
     });
   };
 
-  const editProduct = async (id) => {
-    let { data } = await axios(`houseshop.herokuapp.com/products/update/${id}`);
+  const editProduct = async (newProduct, id) => {
+    console.log(id, newProduct, "hey test");
+    let token = localStorage.getItem("access");
+    console.log(token);
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    let formData = new FormData();
+    formData.append("price", newProduct.price);
+    formData.append("title", newProduct.title);
+    formData.append("category", newProduct.type);
+    formData.append("desc", newProduct.desc);
+    // formData.append("available", newProduct.available);
+
+    let { data } = await axios.patch(`${API}/update/${id}/`, formData, config);
     dispatch({
       type: "EDIT_PRODUCT",
       payload: data,
     });
+    getProductsData();
   };
 
   //   const getUserData = async (email) => {
@@ -78,7 +97,7 @@ const MainContextProvider = ({ children }) => {
     formData.append("price", newProduct.price);
     formData.append("title", newProduct.title);
     formData.append("category", newProduct.category);
-    formData.append("description", newProduct.description);
+    formData.append("desc", newProduct.desc);
     formData.append("author", newProduct.author);
 
     await axios.post(`${API}/create/`, formData, config);
@@ -96,8 +115,15 @@ const MainContextProvider = ({ children }) => {
     getProductsData();
   };
 
-  const saveProduct = async (newProduct) => {
-    await axios.patch(`${API}/update/${newProduct.get("id")}`, newProduct);
+  const saveProduct = async (newProduct, id) => {
+    let token = localStorage.getItem("access");
+    console.log(token, "token");
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+    let res = await axios.patch(`${API}/update/${id}`, newProduct, config);
     getProductsData();
   };
 

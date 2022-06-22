@@ -12,9 +12,11 @@ import { cartContext } from "../../Context/CartContext";
 import "../../Components/Products/ProductsList.css";
 import ReactPaginate from "react-paginate";
 import { mainContext } from "../../Context/MainContext";
+import { Z } from "../../Config";
 
 const ProductsList = () => {
-  const { getProductsData, products, deleteProduct } = useContext(mainContext);
+  const { getProductsData, products, deleteProduct, editProduct } =
+    useContext(mainContext);
   const { addProductToCart } = useContext(cartContext);
   // const { addProductToCart } = useContext(cartContext);
 
@@ -113,7 +115,14 @@ const ProductsList = () => {
                       color="text.secondary"
                       height="25px"
                     >
-                      {item.description}
+                      {item.desc}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      height="25px"
+                    >
+                      {item.category}
                     </Typography>
 
                     <Typography

@@ -26,6 +26,7 @@ const Login = () => {
       const { access, refresh } = res.data;
       localStorage.setItem("access", access);
       localStorage.setItem("refresh", refresh);
+      navigate("/productlist");
       // navigate("/check-token");
     } catch (error) {
       notify(error.response.data);
