@@ -23,26 +23,38 @@ const Cart = () => {
           }}
         >
           <div>
-            <thead>
+            {/* <thead>
               <tr style={{ display: "flex", border: "1px solid white" }}>
-                <th>Фото</th>
+                <th> Фото </th>
+              
                 <th>Название</th>
                 <th>Цена</th>
                 <th>Количество</th>
                 <th>Сумма продукта</th>
               </tr>
-            </thead>
+            </thead> */}
           </div>
-          <tbody>
+          <tbody className="container">
             {cart.products
               ? cart.products.map((elem) => (
                   <tr key={elem.item.id}>
                     <td>
-                      <img width={50} src={elem.item.img1} alt="phone" />
+                      <th className="th-cart"> Фото </th>
+                      <img width={50} src={elem.item.img} alt="phone" />
                     </td>
-                    <td>{elem.item.title}</td>
-                    <td>{elem.item.price}</td>
+
                     <td>
+                      {" "}
+                      <th className="th-cart">Название</th>
+                      {elem.item.title}
+                    </td>
+                    <td>
+                      <th className="th-cart">Цена</th>
+                      {elem.item.price}
+                    </td>
+                    <td>
+                      {" "}
+                      <th className="th-cart">Количество</th>
                       <input
                         type="number"
                         value={elem.count}
@@ -51,9 +63,16 @@ const Cart = () => {
                         }
                       />
                     </td>
-                    <td>{elem.subPrice}</td>
                     <td>
-                      <button onClick={() => deleteCartProduct(elem.item.id)}>
+                      {" "}
+                      <th className="th-cart">Сумма продукта</th>
+                      {elem.subPrice}
+                    </td>
+                    <td>
+                      <button
+                        className="btn-cart-delete"
+                        onClick={() => deleteCartProduct(elem.item.id)}
+                      >
                         Удалить
                       </button>
                     </td>
@@ -63,6 +82,7 @@ const Cart = () => {
           </tbody>
         </table>
         <h4
+          className="h4-cart"
           style={{
             display: "flex",
             flexDirection: "column",
@@ -72,7 +92,7 @@ const Cart = () => {
         >
           Общая сумма: {cart.totalPrice}
           <NavLink to="/payment">
-            <button>Заказать</button>
+            <button className="btn">Заказать</button>
           </NavLink>
         </h4>
       </div>

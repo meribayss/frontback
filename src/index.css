@@ -45,7 +45,7 @@ code {
   background: transparent;
   color: #fff;
   border: 1px solid #fff;
-  cursor: pointer;
+  margin-bottom: 40px;
 }
 
 .btn-light {
