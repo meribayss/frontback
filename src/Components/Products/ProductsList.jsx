@@ -70,37 +70,24 @@ const ProductsList = () => {
   useEffect(() => {
     getProductsData();
   }, [searchParams]);
-  // const handleChange = (e, p) => {
-  //   setPage(p);
-  // };
 
-  // paginate
-
-  const [pageNumber, setPageNumber] = useState(0);
-  const productsLimit = 10;
-  const productVisited = pageNumber * productsLimit;
-  const pageCount = Math.ceil(products.length / productsLimit);
-  // let sliceTwoIndex = productVisited + productsLimit;
-  const changePage = ({ selected }) => {
-    setPageNumber(selected);
-  };
   return (
     <div className="main_container">
       <div className="filter">
         <Filter type={type} setType={setType} />
       </div>
-      <div className="container1">
+      <div className="container">
         {products
           ? products
               // .slice(productVisited, sliceTwoIndex)
               .map((item) => (
                 <Card
                   key={item.id}
-                  className="card"
+                  className="cardd"
                   sx={{
                     borderRadius: "10px",
-                    // width: "470px",
-                    // height: "400px ",
+                    width: "500px",
+                    height: "600px ",
                     marginTop: "130px",
                   }}
                 >
@@ -127,7 +114,7 @@ const ProductsList = () => {
                     // image={item.img1}
                   /> */}
                   <CardContent
-                    sx={{ marginLeft: "20px", marginBottom: "200px" }}
+                    sx={{ marginLeft: "20px", marginBottom: "30px" }}
                   >
                     <Typography gutterBottom variant="h5" component="div">
                       {item.title}
@@ -136,7 +123,7 @@ const ProductsList = () => {
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      height="25px"
+                      height="30px"
                     >
                       {item.desc}
                     </Typography>

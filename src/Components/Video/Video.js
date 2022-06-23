@@ -12,13 +12,13 @@ const Video = () => {
       </video>
       <div className="content">
         <h1>HOUSES</h1>
-        <p>World's first civilian space travel.</p>
+        <p>First ever website for villa purchase</p>
         <div>
           <Link to="/training" className="btn">
-            Training
+            About
           </Link>
           <Link to="/contact" className="btn btn-light">
-            Launch
+            Contact
           </Link>
         </div>
       </div>

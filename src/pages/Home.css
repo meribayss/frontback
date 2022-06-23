@@ -60,6 +60,7 @@ img {
 
 .card h3 {
   margin-bottom: 2rem;
+  color: #000;
 }
 
 .card img {
@@ -94,4 +95,5 @@ img {
 }
 .uff {
   margin-bottom: 36px;
+  color: black;
 }

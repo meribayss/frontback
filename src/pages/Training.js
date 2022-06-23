@@ -5,7 +5,7 @@ import TrainingSection from "../Components/Training/Training";
 const Training = () => {
   return (
     <div>
-      <HeroImage heading="TRAINING." text="Pre-Flight & In-Flight Training." />
+      <HeroImage heading="ABOUT" text="Information about us" />
       <TrainingSection />
     </div>
   );
